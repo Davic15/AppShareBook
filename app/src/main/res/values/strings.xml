@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Share Books</string>
+    <string name="user_label">User Profile</string>
+    <string name="user_name">User Name</string>
+    <string name="user_surname">User Surname</string>
+    <string name="user_email">User Email</string>
+    <string name="user_bio">User Bio</string>
+    <string name="user_button">Update Information</string>
+    <string name="user_button_update">Save</string>
+
+
+</resources>

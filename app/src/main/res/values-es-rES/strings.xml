@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Compartir Libros</string>
+    <string name="user_label">Perfil de Usuario</string>
+    <string name="user_name">Nombre de Usuario</string>
+    <string name="user_surname">Apellido del Usuario</string>
+    <string name="user_email">Email del Usuario</string>
+    <string name="user_bio">Bio del Usuario</string>
+    <string name="user_button">Modificar Informacion</string>
+    <string name="user_button_update">Guardar</string>
+
+
+
+</resources>
