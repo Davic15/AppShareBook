@@ -90,8 +90,8 @@ public class EditProfile extends AppCompatActivity {
         //pictureDialog.setTitle("Select Action");
         pictureDialog.setTitle(getResources().getString(R.string.select_action));
         String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera"};
+                getResources().getString(R.string.select_photo_gallery),
+                getResources().getString(R.string.select_photo_camera)};
         pictureDialog.setItems(pictureDialogItems, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -119,12 +119,12 @@ public class EditProfile extends AppCompatActivity {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
-                    Toast.makeText(EditProfile.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
                     image1.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Toast.makeText(EditProfile.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfile.this, getResources().getString(R.string.image_fail), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -132,7 +132,7 @@ public class EditProfile extends AppCompatActivity {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             image1.setImageBitmap(thumbnail);
             saveImage(thumbnail);
-            Toast.makeText(EditProfile.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
         }
     }
     public void choosePhotoFromGallery(){
@@ -167,7 +167,7 @@ public class EditProfile extends AppCompatActivity {
                     new String[]{f.getPath()},
                     new String[]{"image/jpeg"}, null);
             fo.close();
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath());
+            Log.d("TAG", getResources().getString(R.string.file_save) + f.getAbsolutePath());
 
             return f.getAbsolutePath();
         } catch (IOException e1) {
@@ -179,7 +179,7 @@ public class EditProfile extends AppCompatActivity {
     private void checkPer(){
         if(CheckingPermissionIsEnabledOrNot())
         {
-            Toast.makeText(EditProfile.this, "All Permissions Granted Successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(EditProfile.this, getResources().getString(R.string.all_permission_granted), Toast.LENGTH_LONG).show();
         }
         // If, If permission is not enabled then else condition will execute.
         else {
@@ -210,10 +210,10 @@ public class EditProfile extends AppCompatActivity {
                     boolean WriteExternal = grantResults[2] == PackageManager.PERMISSION_GRANTED;
                     if (CameraPermission && ReadExternal && WriteExternal) {
 
-                        Toast.makeText(EditProfile.this, "Permission Granted", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditProfile.this, getResources().getString(R.string.permission_granted), Toast.LENGTH_LONG).show();
                     }
                     else {
-                        Toast.makeText(EditProfile.this,"Permission Denied",Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditProfile.this,getResources().getString(R.string.permission_denied),Toast.LENGTH_LONG).show();
 
                     }
                 }

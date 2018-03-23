@@ -8,6 +8,14 @@
     <string name="user_button">Update Information</string>
     <string name="user_button_update">Save</string>
 
-    <string name="select_action">Select Action</string>
+    <string name="select_action">Select action</string>
+    <string name="select_photo_gallery">Select photo from Gallery</string>
+    <string name="select_photo_camera">Select photo from Camera</string>
+    <string name="image_saved">Image Saved!</string>
+    <string name="image_fail">Fail</string>
 
+    <string name="all_permission_granted">All Permissions Granted Successfully</string>
+    <string name="permission_granted">Permission Granted</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="file_save">File Saved:</string>
 </resources>
