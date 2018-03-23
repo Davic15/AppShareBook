@@ -83,12 +83,12 @@ public class EditProfile extends AppCompatActivity {
     }
 
     private void openGallery(){
-        //Intent gallery = new Intent (Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        //startActivityForResult(gallery, PICK_IMAGE);
+        //check if the permission are granted or not
         checkPer();
 
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
+        //pictureDialog.setTitle("Select Action");
+        pictureDialog.setTitle(getResources().getString(R.string.select_action));
         String[] pictureDialogItems = {
                 "Select photo from gallery",
                 "Capture photo from camera"};

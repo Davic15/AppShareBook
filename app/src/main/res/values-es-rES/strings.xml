@@ -9,6 +9,8 @@
     <string name="user_button">Modificar Informacion</string>
     <string name="user_button_update">Guardar</string>
 
+    <string name="select_action">Seleccionar Accion</string>
+
 
 
 </resources>
