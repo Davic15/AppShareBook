@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Compartir Libros</string>
-    <string name="user_label">Perfil de Usuario</string>
-    <string name="user_name">Nombre de Usuario</string>
-    <string name="user_surname">Apellido del Usuario</string>
-    <string name="user_email">Email del Usuario</string>
-    <string name="user_bio">Bio del Usuario</string>
+    <string name="user_label">Perfil</string>
+    <string name="user_name">Nombre</string>
+    <string name="user_surname">Apellido</string>
+    <string name="user_email">Email</string>
+    <string name="user_bio">Bio</string>
     <string name="user_button">Modificar Informacion</string>
     <string name="user_button_update">Guardar</string>
-
     <string name="select_action">Seleccionar Accion</string>
     <string name="select_photo_gallery">Seleccionar foto de la Galeria</string>
     <string name="select_photo_camera">Seleccionar foto de la Camara</string>
     <string name="image_saved">Imagen Guardada!</string>
     <string name="image_fail">Error</string>
-
     <string name="all_permission_granted">Todos los Permisos Concedidos Satisfactoriamente</string>
     <string name="permission_granted">Permiso Concedido</string>
     <string name="permission_denied">Permiso Negado</string>
-    <string name="file_save">Archivo Guardado</string>
+    <string name="file_save">Archivo Guardado!</string>
+    <string name="user_profile_image">Imagen Perfil</string>
 
 
 

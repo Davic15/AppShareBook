@@ -1,102 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content"
+<ScrollView android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_label"
-        android:id="@+id/textView7" />
+    <RelativeLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:onClick="openGallery"
-        android:layout_width="match_parent"
-        android:layout_height="227dp"
-        android:layout_below="@+id/textView7"
-        android:layout_toStartOf="@+id/userNameEditText"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_label"
+            android:fontFamily="@font/luckiest_guy"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="35sp"
+            android:id="@+id/textView7" />
 
-
-        app:srcCompat="@mipmap/ic_launcher_round"
-        />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_marginStart="345dp"
-        android:text="@string/user_name" />
-
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView"
-        android:layout_below="@+id/textView"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userNameEditText"
-        android:layout_below="@+id/userNameEditText"
-        android:text="@string/user_surname" />
-
-    <EditText
-        android:id="@+id/userSurnameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userSurnameEditText"
-        android:layout_below="@+id/userSurnameEditText"
-        android:text="@string/user_email" />
-
-    <EditText
-        android:id="@+id/userEmailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_below="@+id/textView3"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userEmailEditText"
-        android:layout_below="@+id/userEmailEditText"
-        android:text="@string/user_bio" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:onClick="openGallery"
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:layout_below="@+id/textView7"
+            android:layout_toStartOf="@+id/userNameEditText"
 
 
-    <EditText
-        android:id="@+id/userBioEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:ems="10"
-        android:inputType="text" />
+            app:srcCompat="@mipmap/ic_launcher_round"
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_marginStart="345dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@string/user_name" />
+
+        <EditText
+            android:id="@+id/userNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView"
+            android:layout_below="@+id/textView"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/userNameEditText"
+            android:layout_below="@+id/userNameEditText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@string/user_surname" />
+
+        <EditText
+            android:id="@+id/userSurnameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/userSurnameEditText"
+            android:layout_below="@+id/userSurnameEditText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@string/user_email" />
+
+        <EditText
+            android:id="@+id/userEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/userEmailEditText"
+            android:layout_below="@+id/userEmailEditText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@string/user_bio" />
 
 
+        <EditText
+            android:id="@+id/userBioEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_below="@+id/textView4"
+            android:ems="10"
+            android:inputType="text" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/userBioEditText"
+            android:layout_below="@+id/userBioEditText"
+            android:onClick="sendData"
+            android:text="@string/user_button_update" />
+
+    </RelativeLayout>
+
+</ScrollView>

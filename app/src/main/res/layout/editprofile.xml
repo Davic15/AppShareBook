@@ -17,7 +17,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_label" />
+            android:fontFamily="@font/luckiest_guy"
+            android:text="@string/user_label"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -29,7 +34,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_name" />
+            android:text="@string/user_name"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/userNameEditText"
@@ -41,7 +49,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_surname" />
+            android:text="@string/user_surname"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/userSurnameEditText"
@@ -53,7 +63,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_email" />
+            android:text="@string/user_email"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/userEmailEditText"
@@ -63,11 +75,12 @@
             android:inputType="textEmailAddress" />
 
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_bio" />
+            android:text="@string/user_bio"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
 

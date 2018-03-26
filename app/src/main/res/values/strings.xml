@@ -1,21 +1,20 @@
 <resources>
     <string name="app_name">Share Books</string>
-    <string name="user_label">User Profile</string>
-    <string name="user_name">User Name</string>
-    <string name="user_surname">User Surname</string>
-    <string name="user_email">User Email</string>
-    <string name="user_bio">User Bio</string>
+    <string name="user_label">Profile</string>
+    <string name="user_name">Name</string>
+    <string name="user_surname">Surname</string>
+    <string name="user_email">Email</string>
+    <string name="user_bio">Bio</string>
     <string name="user_button">Update Information</string>
     <string name="user_button_update">Save</string>
-
     <string name="select_action">Select action</string>
     <string name="select_photo_gallery">Select photo from Gallery</string>
     <string name="select_photo_camera">Select photo from Camera</string>
     <string name="image_saved">Image Saved!</string>
     <string name="image_fail">Fail</string>
-
     <string name="all_permission_granted">All Permissions Granted Successfully</string>
     <string name="permission_granted">Permission Granted</string>
     <string name="permission_denied">Permission Denied</string>
-    <string name="file_save">File Saved:</string>
+    <string name="file_save">File Saved!</string>
+    <string name="user_profile_image">Profile Image</string>
 </resources>

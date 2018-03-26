@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Share Books</string>
+    <string name="user_label">Profilo</string>
+    <string name="user_name">Nome</string>
+    <string name="user_surname">Cognome</string>
+    <string name="user_email">Email</string>
+    <string name="user_bio">Bio</string>
+    <string name="user_button">Aggiorna informazioni</string>
+    <string name="user_button_update">Salva</string>
+    <string name="select_action">Seleziona Azione</string>
+    <string name="select_photo_gallery">Seleziona foto da Galleria</string>
+    <string name="select_photo_camera">Seleziona foto da Fotocamera</string>
+    <string name="image_saved">Immagine Salvata!</string>
+    <string name="image_fail">Errore</string>
+    <string name="all_permission_granted">Tutti i Permessi Garantiti Correttamente</string>
+    <string name="permission_granted">Permesso Concesso</string>
+    <string name="permission_denied">Permesso Negato</string>
+    <string name="file_save">File Salvato!</string>
+    <string name="user_profile_image">Immagine Profilo</string>
+</resources>
