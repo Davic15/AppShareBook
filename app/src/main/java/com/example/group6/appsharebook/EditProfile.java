@@ -7,6 +7,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -108,7 +114,7 @@ public class EditProfile extends AppCompatActivity {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     saveToInternalStorage(bitmap);
                     Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
-                    image1.setImageBitmap(bitmap); //show the image into the interface
+                    image1.setImageBitmap( getRoundedCornerBitmap(bitmap)); //show the image into the interface
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -118,7 +124,7 @@ public class EditProfile extends AppCompatActivity {
 
         } else if (requestCode == CAMERA_S) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            image1.setImageBitmap(thumbnail);
+            image1.setImageBitmap( getRoundedCornerBitmap(thumbnail));
             saveToInternalStorage(thumbnail);
             Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
         }
@@ -232,7 +238,7 @@ public class EditProfile extends AppCompatActivity {
                 fis = new FileInputStream(userProfileImagePath);
                 Bitmap b = BitmapFactory.decodeStream(fis);
                 image1 = findViewById(R.id.imageView);
-                image1.setImageBitmap(b);
+                image1.setImageBitmap( getRoundedCornerBitmap(b));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } finally {
@@ -243,5 +249,27 @@ public class EditProfile extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = 12;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
     }
 }
