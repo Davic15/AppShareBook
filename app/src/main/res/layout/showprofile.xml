@@ -35,7 +35,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="227dp"
+            android:layout_height="200dp"
             android:contentDescription="@string/user_profile_image"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
