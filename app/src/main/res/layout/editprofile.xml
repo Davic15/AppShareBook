@@ -44,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/hint_user_name"
             android:inputType="textPersonName" />
 
         <TextView
@@ -57,12 +58,14 @@
             android:id="@+id/userSurnameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/hint_user_surname"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:text="@string/user_email"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -71,6 +74,7 @@
             android:id="@+id/userEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/hint_user_email"
             android:ems="10"
             android:inputType="textEmailAddress" />
 
@@ -88,6 +92,7 @@
             android:id="@+id/userBioEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/hint_user_bio"
             android:ems="10"
             android:inputType="text" />
 

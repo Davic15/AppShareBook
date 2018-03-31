@@ -18,4 +18,8 @@
     <string name="permission_denied">Permesso Negato</string>
     <string name="file_save">File Salvato!</string>
     <string name="user_profile_image">Immagine Profilo</string>
+    <string name="hint_user_name">Esempio: John</string>
+    <string name="hint_user_surname">Esempio: Doe</string>
+    <string name="hint_user_email">Esempio: utente@dominio.com</string>
+    <string name="hint_user_bio">Esempio: Io sono .....</string>
 </resources>

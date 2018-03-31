@@ -51,6 +51,7 @@
             android:layout_alignStart="@+id/textView"
             android:layout_below="@+id/textView"
             android:ems="10"
+            android:hint="@string/hint_user_name"
             android:inputType="textPersonName" />
 
         <TextView
@@ -71,6 +72,7 @@
             android:layout_below="@+id/textView2"
             android:layout_marginTop="12dp"
             android:ems="10"
+            android:hint="@string/hint_user_surname"
             android:inputType="textPersonName" />
 
         <TextView
@@ -90,6 +92,7 @@
             android:layout_alignStart="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:ems="10"
+            android:hint="@string/hint_user_email"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -110,6 +113,7 @@
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/textView4"
             android:ems="10"
+            android:hint="@string/hint_user_bio"
             android:inputType="text" />
 
         <Button
