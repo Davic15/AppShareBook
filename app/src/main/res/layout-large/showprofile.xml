@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            app:theme="@style/AppTheme"
+            app:titleTextColor="@color/titleColor">
+
+        </android.support.v7.widget.Toolbar>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/luckiest_guy"
+            android:text="@string/user_label"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/user_profile_image"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+
+        <TextView
+            android:id="@+id/textViewUserName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textViewUserSurname1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_surname"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewUserSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_surname"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textViewUserEmail1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_email"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_email"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textViewUserBio1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_bio"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewUserBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_bio"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</ScrollView>
