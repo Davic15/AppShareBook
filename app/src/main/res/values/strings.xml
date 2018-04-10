@@ -27,4 +27,12 @@
     <string name="register">No Account? Register here</string>
     <string name="registerButton">Register</string>
 
+    //BookProfile String (Book Informations)
+    <string name="book_name">Name</string>
+    <string name="book_author">Author</string>
+    <string name="ISBN">ISBN</string>
+    <string name="publisher">Publisher</string>
+    <string name="edition_year">Edition Year</string>
+    <string name="book_conditions">Book Conditions</string>
+
 </resources>

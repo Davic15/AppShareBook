@@ -29,5 +29,13 @@
     <string name="registerButton">Registrar</string>
 
 
+    //Book Information strings
+    <string name="book_name">Nombre</string>
+    <string name="book_author">Autor</string>
+    <string name="ISBN">ISBN</string>
+    <string name="publisher">Casa Editorial</string>
+    <string name="edition_year">Edicion</string>
+    <string name="book_conditions">Condicion</string>
+
 
 </resources>
