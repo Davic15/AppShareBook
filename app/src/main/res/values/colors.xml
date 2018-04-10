@@ -9,4 +9,5 @@
     <color name="textColor">#3f68b5</color>
     <color name="editTextColor">#3a88af</color>
     <color name="background">#94d7fc</color>
+    <color name="White">#FFFFFF</color>
 </resources>

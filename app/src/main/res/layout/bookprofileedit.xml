@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+        android:id="@+id/BookNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/book_name" />
+
+
+        <EditText
+            android:id="@+id/BookISBNEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/ISBN" />
+
+        <EditText
+            android:id="@+id/BookAuthorEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="@string/book_author" />
+
+
+        <EditText
+            android:id="@+id/BookEditionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/edition_year" />
+        <EditText
+            android:id="@+id/BookConditionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/book_conditions"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:onClick="openGallery"
+            android:background="@drawable/circle" />
+
+        <Button
+            android:id="@+id/button_barscan"
+            android:layout_width="150dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/White"
+            android:text="@string/scan_bar_code" />
+
+
+        <Button
+            android:id="@+id/button_bookimage"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/White"
+            android:text="@string/take_book_picture" />
+
+        <Button
+            android:id="@+id/saveButton_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text="@string/save_button_book" />
+    </LinearLayout>
+
+
+
+
+</ScrollView>

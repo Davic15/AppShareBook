@@ -23,11 +23,15 @@
     <string name="hint_user_bio">Example: I am .....</string>
 
     //BookProfile String (Book Informations)
+    <string name="book_label">Book Profile</string>
     <string name="book_name">Name</string>
     <string name="book_author">Author</string>
     <string name="ISBN">ISBN</string>
     <string name="publisher">Publisher</string>
     <string name="edition_year">Edition Year</string>
     <string name="book_conditions">Book Conditions</string>
+    <string name="scan_bar_code">Scan Barcode</string>
+    <string name="take_book_picture">Take Book Picture</string>
+    <string name="save_button_book">Save</string>
 
 </resources>

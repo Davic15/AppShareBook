@@ -30,4 +30,6 @@
     <string name="publisher">Casa Editrice</string>
     <string name="edition_year">Edizione</string>
     <string name="book_conditions">Condizioni</string>
+    <string name="scan_bar_code">Scannerizza Barcode</string>
+    <string name="take_book_picture">Scatta Foto</string>
 </resources>
