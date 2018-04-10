@@ -69,6 +69,7 @@ public class BookProfile extends AppCompatActivity {
         super.onActivityResult(requestCode ,resultCode, data);
 
 
+
         if(requestCode == CAMERA_S){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             //convert image and send it to the database
