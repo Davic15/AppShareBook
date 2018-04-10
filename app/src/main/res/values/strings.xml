@@ -21,6 +21,11 @@
     <string name="hint_user_surname">Example: Doe</string>
     <string name="hint_user_email">Example: user@domain.com</string>
     <string name="hint_user_bio">Example: I am .....</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="register">No Account? Register here</string>
+    <string name="registerButton">Register</string>
 
     //BookProfile String (Book Informations)
     <string name="book_label">Book Profile</string>
@@ -33,5 +38,7 @@
     <string name="scan_bar_code">Scan Barcode</string>
     <string name="take_book_picture">Take Book Picture</string>
     <string name="save_button_book">Save</string>
+
+    //testi
 
 </resources>
