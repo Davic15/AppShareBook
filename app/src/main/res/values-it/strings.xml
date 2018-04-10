@@ -22,4 +22,12 @@
     <string name="hint_user_surname">Esempio: Doe</string>
     <string name="hint_user_email">Esempio: utente@dominio.com</string>
     <string name="hint_user_bio">Esempio: Io sono .....</string>
+
+    //Book Information strings
+    <string name="book_name">Nome</string>
+    <string name="book_author">Autore</string>
+    <string name="ISBN">ISBN</string>
+    <string name="publisher">Casa Editrice</string>
+    <string name="edition_year">Edizione</string>
+    <string name="book_conditions">Condizioni</string>
 </resources>
