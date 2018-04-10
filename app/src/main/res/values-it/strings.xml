@@ -22,4 +22,9 @@
     <string name="hint_user_surname">Esempio: Doe</string>
     <string name="hint_user_email">Esempio: utente@dominio.com</string>
     <string name="hint_user_bio">Esempio: Io sono .....</string>
+    <string name="login">Accedi</string>
+    <string name="password">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="register">Non hai un Account? Registrati qui</string>
+    <string name="registerButton">Registrati</string>
 </resources>
