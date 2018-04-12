@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    android:orientation="vertical"
+    tools:context="com.example.group6.appsharebook.MainPage">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:padding="12dp"
+        android:src="@drawable/logobooks" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:padding="12dp"
+        android:fontFamily="@font/luckiest_guy"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:text="@string/user_email"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/loginUsername"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="@string/hint_user_email"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:text="@string/password"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/userPassword"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loginButton"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_margin="12dp"
+        android:padding="12dp"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickRegister"
+        android:text="@string/registerButton"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="20sp" />
+
+</LinearLayout>

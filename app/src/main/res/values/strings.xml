@@ -27,6 +27,7 @@
     <string name="register">No Account? Register here</string>
     <string name="registerButton">Register</string>
 
+
     //BookProfile String (Book Informations)
     <string name="book_label">Book Profile</string>
     <string name="book_name">Name</string>
