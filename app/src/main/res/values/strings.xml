@@ -42,4 +42,8 @@
 
     //testi
 
+    <string name="facebook_app_id">194805724632575</string>
+    <string name="fb_login_protocol_scheme">fb194805724632575</string>
+
+
 </resources>
