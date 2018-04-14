@@ -17,6 +17,7 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        //Get the instance of the data base.
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -35,7 +36,10 @@ public class MainPage extends AppCompatActivity {
                 EditText userwd = (EditText) findViewById(R.id.loginUsername);
                 String pass11 = passwd.getText().toString();
                 String user11 = userwd.getText().toString();
+                //this ID gets the id of the session (Example if user franklin logs into the app all
+                //the update are reflected without create a new register or new user on the data base
                 String id = mDatabase.push().getKey();
+                //using a clase to send all data getter and setter methods
                 User user = new User (pass11, user11);
                 mDatabase.child("user").child(id).setValue(user);
 
