@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Registration extends AppCompatActivity implements View.OnClickListener {
+public class Registration extends AppCompatActivity  {
 
     private Button buttonRegister;
     private EditText userEmail;
@@ -37,7 +38,13 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         userEmail = findViewById(R.id.registerUsername);
         userPassword = findViewById(R.id.registerPassword);
 
-        buttonRegister.setOnClickListener(this);
+        //buttonRegister.setOnClickListener(this);
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
 
     }
 

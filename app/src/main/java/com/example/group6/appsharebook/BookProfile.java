@@ -25,6 +25,7 @@ public class BookProfile extends AppCompatActivity {
 
     ImageView barCode, bookCover;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,12 +40,15 @@ public class BookProfile extends AppCompatActivity {
         edition = findViewById(R.id.BookEditionEdit);
         conditions = findViewById(R.id.BookConditionEdit);
 
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //store informations to the database (FireBase)
             }
         });
+
+
 
 
         scanBarCode.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +86,6 @@ public class BookProfile extends AppCompatActivity {
 
     private void openGallery(){
         //check if the permission are granted or not
-
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle(getResources().getString(R.string.select_action));
         String[] pictureDialogItems = {
