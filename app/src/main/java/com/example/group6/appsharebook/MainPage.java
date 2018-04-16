@@ -39,7 +39,6 @@ public class MainPage extends AppCompatActivity {
     private ProgressDialog dialog;
 
     CallbackManager mCallBackManager;
-    LoginButton loginButton;
     private static final String TAG = "FACELOG";
     private Button buttonRegister;
     private Button login;
@@ -64,12 +63,12 @@ public class MainPage extends AppCompatActivity {
             Intent i = new Intent(this, ShowProfile.class);
             startActivity(i);
         }
-    }
-        /*//mCallBackManager = CallbackManager.Factory.create();
-        //LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
-        //loginButton.setReadPermissions("email", "public_profile");
-        //loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
-        //    @Override
+
+        mCallBackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+            @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess: "+loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
@@ -137,7 +136,7 @@ public class MainPage extends AppCompatActivity {
         // Pass the activity result back to the Facebook SDK
         mCallBackManager.onActivityResult(requestCode, resultCode, data);
     }
-*/
+
         public void onClick (View view) {
             if (view == buttonRegister) {
                 clickRegister();
@@ -153,12 +152,9 @@ public class MainPage extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    //public void clickLogin (View v){
-       // LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-      //  Button btn = (Button)findViewById(R.id.login);
-      //  btn.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-            public void clickLogin() {
+
+
+      public void clickLogin() {
 
                 EditText passwd = (EditText) findViewById(R.id.userPassword);
                 EditText userwd = (EditText) findViewById(R.id.loginUsername);
