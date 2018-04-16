@@ -24,6 +24,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,17 +40,24 @@ public class EditProfile extends AppCompatActivity {
     private int GALLERY = 1, CAMERA_S = 2;
     ImageView image1;
     EditText name1,surname1,email1,userBio1;
+    private Firebase url;
+
 
     public static final int RequestPermissionCode = 7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.editprofile);
         name1 = findViewById(R.id.userNameEditText);
         image1 = findViewById(R.id.imageView);
         surname1 = findViewById(R.id.userSurnameEditText);
         email1 = findViewById(R.id.userEmailEditText);
         userBio1 = findViewById(R.id.userBioEditText);
+
+        url = new Firebase("https://sharebooks-acb77.firebaseio.com/");
+
+
 
         loadImageFromStorage();
 
@@ -63,7 +73,6 @@ public class EditProfile extends AppCompatActivity {
     public void sendData (View v) {
 
         Intent returnIntent = new Intent();
-
         String name = name1.getText().toString();
         returnIntent.putExtra("name",name);
         String surname = surname1.getText().toString();
@@ -73,8 +82,18 @@ public class EditProfile extends AppCompatActivity {
         String userBio = userBio1.getText().toString();
         returnIntent.putExtra("userBio",userBio);
 
+        User user = new User (name,surname);
+
+        // Firebase firebase = url.child("Users").child("Name").setValue(user);
+        //firebase.setValue(name);
+        //Firebase firebase1 = firebase.child("Name");
+        //firebase1.setValue(surname);
+
+
         setResult(RESULT_OK, returnIntent);
         finish();
+
+
     }
 
     private void openGallery(){
@@ -101,6 +120,19 @@ public class EditProfile extends AppCompatActivity {
         });
         pictureDialog.show();
     }
+
+    public class User {
+
+        public String username;
+        public String email;
+
+        public User(String username, String email) {
+            this.username = username;
+            this.email = email;
+        }
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);

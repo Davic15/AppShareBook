@@ -60,8 +60,8 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/loginButton"
-        android:onClick="clickLogin"
         android:textColor="@color/buttonTextColor"
         android:textSize="20sp" />
 
@@ -79,7 +79,7 @@
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="clickRegister"
+        android:onClick="onClick"
         android:text="@string/registerButton"
         android:textColor="@color/buttonTextColor"
         android:textSize="20sp" />

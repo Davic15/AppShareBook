@@ -1,6 +1,7 @@
 package com.example.group6.appsharebook;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,11 @@ public class Registration extends AppCompatActivity  {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        if (firebaseAuth.getCurrentUser()!= null) {
+            finish();
+            startActivity(new Intent(this,ShowProfile.class));
+        }
+
         progressDialog = new ProgressDialog(this);
 
         buttonRegister = findViewById(R.id.registrationButton);
@@ -54,13 +60,13 @@ public class Registration extends AppCompatActivity  {
 
         if (TextUtils.isEmpty(email)) {
             // email is empty;
-            Toast.makeText(this,"Please enter Email",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Please enter Email",Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
             // password is empty;
-            Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT).show();
             return;
 
         }
@@ -74,6 +80,8 @@ public class Registration extends AppCompatActivity  {
                         if (task.isSuccessful()) {
                             // user is registered
                             Toast.makeText( Registration.this, "User registered",Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(),ShowProfile.class));
                         } else {
                             Toast.makeText( Registration.this, "User not registered",Toast.LENGTH_SHORT).show();
                         }
