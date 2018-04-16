@@ -62,6 +62,7 @@ public class MainPage extends AppCompatActivity {
             finish();
             Intent i = new Intent(this, ShowProfile.class);
             startActivity(i);
+
         }
 
         mCallBackManager = CallbackManager.Factory.create();
@@ -101,8 +102,8 @@ public class MainPage extends AppCompatActivity {
         Toast.makeText(MainPage.this, "You are Logged in", Toast.LENGTH_LONG).show();
         //if the user is logged in, i will send him/her to other activity
         Intent showProfile = new Intent(MainPage.this, ShowProfile.class);
-        startActivity(showProfile);
         finish();
+        startActivity(showProfile);
     }
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
@@ -181,9 +182,11 @@ public class MainPage extends AppCompatActivity {
                                 dialog.dismiss();
 
                                 if (task.isSuccessful()) {
+
                                     Intent intent = new Intent(MainPage.this,ShowProfile.class) ;
                                     finish();
                                     startActivity(intent);
+
                                 } else {
                                     Toast.makeText(MainPage.this,"Not logged in. Retry",Toast.LENGTH_SHORT).show();
                                 }
