@@ -8,26 +8,47 @@
     android:orientation="vertical"
     tools:context="com.example.group6.appsharebook.MainPage">
 
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:padding="12dp"
+        android:layout_height="100dp"
+        android:padding="7dp"
         android:src="@drawable/logobooks" />
+
+
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp" />
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_button"
+        android:layout_width="373dp"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"></com.google.android.gms.common.SignInButton>
+
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="50dp"
         android:text="@string/login"
         android:textAlignment="center"
         android:textSize="34sp"
-        android:padding="12dp"
+        android:padding="10dp"
         android:fontFamily="@font/luckiest_guy"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_height="50dp"
         android:text="@string/user_email"
         android:textAlignment="textStart"
         android:textSize="24sp"
@@ -36,14 +57,14 @@
     <EditText
         android:id="@+id/loginUsername"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:hint="@string/hint_user_email"
         android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="53dp"
+        android:layout_height="50dp"
         android:text="@string/password"
         android:textAlignment="textStart"
         android:textSize="24sp"
@@ -52,7 +73,7 @@
     <EditText
         android:id="@+id/userPassword"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -67,9 +88,9 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="53dp"
+        android:layout_height="50dp"
         android:layout_margin="12dp"
-        android:padding="12dp"
+        android:padding="10dp"
         android:text="@string/register"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -82,14 +103,8 @@
         android:onClick="onClick"
         android:text="@string/registerButton"
         android:textColor="@color/buttonTextColor"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+
 
 </LinearLayout>
