@@ -14,14 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
-import com.google.firebase.auth.TwitterAuthProvider;
-import com.twitter.sdk.android.core.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterConfig;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -67,9 +59,6 @@ public class MainPage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private TwitterLoginButton mLoginButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,29 +95,31 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        mCallBackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email", "public_profile");
-        loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
-            @Override
+          mCallBackManager = CallbackManager.Factory.create();
+          LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+          loginButton.setReadPermissions("email", "public_profile");
+          loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+
+              @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess: "+loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
+                  Log.d(TAG, "facebook:onSuccess: " + loginResult);
+                  handleFacebookAccessToken(loginResult.getAccessToken());
+              }
 
-            }
+              @Override
+              public void onCancel () {
+            Log.d(TAG, "facebook:onCancel: ");
 
-            @Override
-            public void onCancel() {
-                Log.d(TAG, "facebook:onCancel: ");
+        }
 
-            }
+               @Override
+              public void onError(FacebookException error) {
+                Log.d(TAG, "facebook:onError", error);
+             }
+         });
 
-            @Override
-            public void onError(FacebookException error) {
-                Log.d(TAG,"facebook:onError", error);
-            }
-        });
     }
+
 
     @Override
     public void onStart() {
@@ -164,11 +155,12 @@ public class MainPage extends AppCompatActivity {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
                 // [START_EXCLUDE]
-                updateUI();
+                //updateUI();
                 // [END_EXCLUDE]
             }
-        } else {
-            mCallBackManager.onActivityResult(requestCode, resultCode, data);
+       //     else {
+       //         mCallBackManager.onActivityResult(requestCode, resultCode, data);
+       //     }
         }
     }
 

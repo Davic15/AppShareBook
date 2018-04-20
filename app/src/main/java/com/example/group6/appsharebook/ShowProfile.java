@@ -13,23 +13,43 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import android.net.Uri;
 
 public class ShowProfile extends AppCompatActivity {
     android.support.v7.widget.Toolbar tb;
     TextView nameView,surnameView,emailView,bioView;
     String name,surname,email,bio;
     ImageView imageView;
+    FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private StorageReference myStorage;
+    private DatabaseReference UsersDatabase;
+    String userID;
+
 
     private static final int SECOND_ACTIVITY_REQUEST_CODE = 0;
     @Override
@@ -40,22 +60,81 @@ public class ShowProfile extends AppCompatActivity {
         tb.setTitleTextColor(Color.WHITE);
         setSupportActionBar(tb);
 
+        myStorage = FirebaseStorage.getInstance().getReference();
+
         nameView = findViewById(R.id.textViewUserName);
         surnameView = findViewById(R.id.textViewUserSurname);
         emailView = findViewById(R.id.textViewUserEmail);
         bioView = findViewById(R.id.textViewUserBio);
+        imageView = findViewById(R.id.imageView);
 
         SharedPreferences settings = getPreferences(MODE_PRIVATE);
-        String name1 = settings.getString("name", name);
-        nameView.setText(name1);
-        String surname1 = settings.getString("surname",surname);
-        surnameView.setText(surname1);
-        String email1 = settings.getString("email",email);
-        emailView.setText(email1);
-        String bio1 = settings.getString("userBio",bio);
-        bioView.setText(bio1);
+        //String name1 = settings.getString("name", name);
+        //nameView.setText(name1);
+        //String surname1 = settings.getString("surname",surname);
+        //surnameView.setText(surname1);
+        //String email1 = settings.getString("email",email);
+        //emailView.setText(email1);
+        //String bio1 = settings.getString("userBio",bio);
+        //bioView.setText(bio1);
 
-        loadImageFromStorage();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //String emailUser = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+
+        mDatabase.child("Users")
+                .orderByKey()
+                .equalTo(userID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot child :dataSnapshot.getChildren()) {
+                            String loggedUsername = child.getValue(User.class).getName();
+                            nameView.setText(loggedUsername);
+                            String loggedUserSurname = child.getValue(User.class).getSurname();
+                            surnameView.setText(loggedUserSurname);
+                            String loggedUserEmail = child.getValue(User.class).getEmail();
+                            emailView.setText(loggedUserEmail);
+                            String loggedUserBio = child.getValue(User.class).getUserBio();
+                            bioView.setText(loggedUserBio);
+                            // String uri = child.getValue(User.class).getUri();
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled (DatabaseError databaseError){
+                        throw databaseError.toException();
+                    }
+
+                });
+
+
+
+
+       // loadImageFromStorage();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        StorageReference newStorage = myStorage.child("ProfilePics").child(userID);
+        newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(imageView);
+            }
+        });
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -95,8 +174,12 @@ public class ShowProfile extends AppCompatActivity {
                 String bio = data.getStringExtra("userBio");
                 if(!bio.isEmpty())
                     bioView.setText(bio);
+                //uri = data.getStringExtra("Uri");
+
 
                 loadImageFromStorage();
+                User user = new User (name,surname,email,bio);
+                mDatabase.child("Users").child(userID).setValue(user);
             }
         }
     }
