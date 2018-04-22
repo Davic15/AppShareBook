@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,36 +40,26 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
 
-
-import java.util.Arrays;
 
 public class MainPage extends AppCompatActivity {
-
     private ProgressDialog dialog;
-
     CallbackManager mCallBackManager;
     private static final String TAG = "FACELOG";
     private TextView register;
     private Button login;
     private static final String TAG1 = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
-
     private GoogleSignInClient mGoogleSignInClient;
-
     private SignInButton signInButton;
-
     private Button phoneAuth;
-
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
+
         dialog = new ProgressDialog(this);
         register = findViewById(R.id.textregister);
         login = findViewById(R.id.login);
@@ -76,9 +69,7 @@ public class MainPage extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
 
         //Facebook login
         mAuth = FirebaseAuth.getInstance();
@@ -86,43 +77,34 @@ public class MainPage extends AppCompatActivity {
             finish();
             Intent i = new Intent(this, ShowProfile.class);
             startActivity(i);
-
         }
-
         signInButton = findViewById(R.id.google_button);
-
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
         });
-
-          mCallBackManager = CallbackManager.Factory.create();
-          LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
-          loginButton.setReadPermissions("email", "public_profile");
-          loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
-
-              @Override
+        mCallBackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+            @Override
             public void onSuccess(LoginResult loginResult) {
                   Log.d(TAG, "facebook:onSuccess: " + loginResult);
                   handleFacebookAccessToken(loginResult.getAccessToken());
-              }
+            }
+            @Override
+            public void onCancel () {
+                Log.d(TAG, "facebook:onCancel: ");
+            }
 
-              @Override
-              public void onCancel () {
-            Log.d(TAG, "facebook:onCancel: ");
-
-        }
-
-               @Override
-              public void onError(FacebookException error) {
+            @Override
+            public void onError(FacebookException error) {
                 Log.d(TAG, "facebook:onError", error);
-             }
+            }
          });
-
     }
-
 
     @Override
     public void onStart() {
@@ -139,14 +121,15 @@ public class MainPage extends AppCompatActivity {
     }
 
     private void updateUI() {
-
-        startActivity(new Intent(MainPage.this,ShowProfile.class));
+        //startActivity(new Intent(MainPage.this,ShowProfile.class));
+        Intent showProfile = new Intent( this, ShowProfile.class);
+        startActivity(showProfile);
+        finish();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -165,11 +148,13 @@ public class MainPage extends AppCompatActivity {
        //         mCallBackManager.onActivityResult(requestCode, resultCode, data);
        //     }
         }
+        if (FacebookSdk.isFacebookRequestCode(requestCode)){
+            mCallBackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -183,9 +168,7 @@ public class MainPage extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-
                         }
-
                         // ...
                     }
                 });
@@ -193,7 +176,6 @@ public class MainPage extends AppCompatActivity {
 
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
-
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -209,65 +191,55 @@ public class MainPage extends AppCompatActivity {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(MainPage.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }
 
 
-        public void onClick (View view) {
-            if (view == register) {
-                clickRegister();
-            }
-
-            if (view == login) {
-                clickLogin();
-            }
-
-            if (view == phoneAuth) {
-                Intent intent = new Intent (MainPage.this,PhoneAuth.class);
-                startActivity(intent);
-            }
+    public void onClick (View view) {
+        if (view == register) {
+            clickRegister();
         }
+
+        if (view == login) {
+            clickLogin();
+        }
+
+        if (view == phoneAuth) {
+            Intent intent = new Intent (MainPage.this,PhoneAuth.class);
+            startActivity(intent);
+        }
+    }
 
     public void clickRegister () {
         Intent intent = new Intent(this, Registration.class);
         this.startActivity(intent);
     }
 
+    public void clickLogin() {
+        EditText passwd = (EditText) findViewById(R.id.userPassword);
+        EditText userwd = (EditText) findViewById(R.id.loginUsername);
+        String pass11 = passwd.getText().toString();
+        String user11 = userwd.getText().toString();
+        //this ID gets the id of the session (Example if user franklin logs into the app all
+        //the update are reflected without create a new register or new user on the data base
+        if (TextUtils.isEmpty(user11)) {
+            // email is empty;
+            Toast.makeText(MainPage.this,"Please enter email",Toast.LENGTH_SHORT).show();
+        }
 
-
-      public void clickLogin() {
-
-                EditText passwd = (EditText) findViewById(R.id.userPassword);
-                EditText userwd = (EditText) findViewById(R.id.loginUsername);
-                String pass11 = passwd.getText().toString();
-                String user11 = userwd.getText().toString();
-                //this ID gets the id of the session (Example if user franklin logs into the app all
-                //the update are reflected without create a new register or new user on the data base
-                if (TextUtils.isEmpty(user11)) {
-                    // email is empty;
-                    Toast.makeText(MainPage.this,"Please enter email",Toast.LENGTH_SHORT).show();
-                }
-
-                if (TextUtils.isEmpty(pass11)) {
-                    // password is empty;
-                    Toast.makeText(MainPage.this,"Please enter Password",Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-
-                mAuth.signInWithEmailAndPassword(user11,pass11)
-                        .addOnCompleteListener(MainPage.this, new OnCompleteListener<AuthResult>() {
+        if (TextUtils.isEmpty(pass11)) {
+            // password is empty;
+            Toast.makeText(MainPage.this,"Please enter Password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(user11,pass11)
+                .addOnCompleteListener(MainPage.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 dialog.dismiss();
-
                                 if (task.isSuccessful()) {
-
                                     Intent intent = new Intent(MainPage.this,ShowProfile.class) ;
                                     finish();
                                     startActivity(intent);
@@ -277,9 +249,5 @@ public class MainPage extends AppCompatActivity {
                                 }
                             }
                         });
-
-
             }
-
-
 }
