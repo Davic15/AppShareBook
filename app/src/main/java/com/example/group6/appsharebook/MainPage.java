@@ -48,7 +48,7 @@ public class MainPage extends AppCompatActivity {
 
     CallbackManager mCallBackManager;
     private static final String TAG = "FACELOG";
-    private Button buttonRegister;
+    private TextView register;
     private Button login;
     private static final String TAG1 = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -56,6 +56,8 @@ public class MainPage extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
 
     private SignInButton signInButton;
+
+    private Button phoneAuth;
 
     private FirebaseAuth mAuth;
 
@@ -66,8 +68,9 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
         //mDatabase = FirebaseDatabase.getInstance().getReference();
         dialog = new ProgressDialog(this);
-        buttonRegister = findViewById(R.id.register);
+        register = findViewById(R.id.textregister);
         login = findViewById(R.id.login);
+        phoneAuth = findViewById(R.id.phonebutton);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -216,12 +219,17 @@ public class MainPage extends AppCompatActivity {
 
 
         public void onClick (View view) {
-            if (view == buttonRegister) {
+            if (view == register) {
                 clickRegister();
             }
 
             if (view == login) {
                 clickLogin();
+            }
+
+            if (view == phoneAuth) {
+                Intent intent = new Intent (MainPage.this,PhoneAuth.class);
+                startActivity(intent);
             }
         }
 

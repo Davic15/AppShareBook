@@ -91,11 +91,6 @@ public class EditProfile extends AppCompatActivity {
         returnIntent.putExtra("userBio",userBio);
         returnIntent.putExtra("Uri",contentURI);
 
-        // Firebase firebase = url.child("Users").child("Name").setValue(user);
-        //firebase.setValue(name);
-        //Firebase firebase1 = firebase.child("Name");
-        //firebase1.setValue(surname);
-
 
         setResult(RESULT_OK, returnIntent);
         finish();
@@ -126,18 +121,6 @@ public class EditProfile extends AppCompatActivity {
             }
         });
         pictureDialog.show();
-    }
-
-    public class User {
-
-        public String username;
-        public String email;
-
-        public User(String username, String email) {
-            this.username = username;
-            this.email = email;
-        }
-
     }
 
     @Override
@@ -184,12 +167,32 @@ public class EditProfile extends AppCompatActivity {
            // }
 
         } else if (requestCode == CAMERA_S) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            image1.setImageBitmap( getRoundedCornerBitmap(thumbnail));
-            saveToInternalStorage(thumbnail);
-            Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
+            //Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            //image1.setImageBitmap( getRoundedCornerBitmap(thumbnail));
+            //saveToInternalStorage(thumbnail);
+            if (data != null) {
+                contentURI = data.getData().toString();
+                Uri uri = data.getData();
+
+
+                StorageReference childPath = myStorage.child("ProfilePics").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+
+
+                childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
+
+                        Uri myuri = taskSnapshot.getDownloadUrl();
+                        Picasso.get().load(myuri).into(image1);
+
+                    }
+                });
+            }
         }
     }
+
     public void choosePhotoFromGallery(){
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -201,7 +204,7 @@ public class EditProfile extends AppCompatActivity {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_S);
     }
-
+/*
     private String saveToInternalStorage(Bitmap bitmapImage){
 
         //create the path where save the image
@@ -228,7 +231,7 @@ public class EditProfile extends AppCompatActivity {
         }
         return directory.getAbsolutePath();
     }
-
+*/
     private void checkPer(){
 
         //If permission is not enabled
@@ -285,6 +288,7 @@ public class EditProfile extends AppCompatActivity {
                 ThirdPermissionResult == PackageManager.PERMISSION_GRANTED;
     }
 
+    /*
     private void loadImageFromStorage(){
 
         //Retrieve the user profile image
@@ -311,7 +315,7 @@ public class EditProfile extends AppCompatActivity {
             }
         }
     }
-
+*/
     private static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
 
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
