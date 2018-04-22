@@ -8,9 +8,61 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:467202452741:android:114c3bff0f360841",
+        "mobilesdk_app_id": "1:467202452741:android:029f9dfff7e9bc2a",
         "android_client_info": {
           "package_name": "com.example.group6.appsharebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467202452741-psbng78hb7pe9rjfu96vne3dbvddocqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.group6.appsharebook",
+            "certificate_hash": "3aaf2dceb7e4360f2db5be7acf0db819ba958f9e"
+          }
+        },
+        {
+          "client_id": "467202452741-ir91clcuc7b7cs9i2g59p60obc0fqqbg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.group6.appsharebook",
+            "certificate_hash": "6f3948e914930fc9dc1892cf8e86e334c9b96715"
+          }
+        },
+        {
+          "client_id": "467202452741-4hrr0o6bvqj3cpuvkc0rrv5kch99a02i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGy45nCezd_SXspbZL5tO54hIJCSTxWY0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467202452741-4hrr0o6bvqj3cpuvkc0rrv5kch99a02i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467202452741:android:114c3bff0f360841",
+        "android_client_info": {
+          "package_name": "com.example.group6.appsharebook.android"
         }
       },
       "oauth_client": [
@@ -18,7 +70,7 @@
           "client_id": "467202452741-h1eq71f260jqj7p7r55jm7obida6kvl0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.group6.appsharebook",
+            "package_name": "com.example.group6.appsharebook.android",
             "certificate_hash": "6f3948e914930fc9dc1892cf8e86e334c9b96715"
           }
         },

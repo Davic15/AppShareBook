@@ -1,17 +1,27 @@
 package com.example.group6.appsharebook;
 
+import android.net.Uri;
+
+import com.google.firebase.storage.StorageReference;
+
+import java.net.URL;
+
 public class Book {
 
     private String Title;
     private String Category;
     private String Description;
-    private int Thumbnail;
-
-    public Book(){
-
-    }
-
+    //private int Thumbnail;
+    private String Thumbnail;
+/*
     public Book (String title, String category, String description, int thumbnail){
+        Title = title;
+        Category = category;
+        Description = description;
+        Thumbnail = thumbnail;
+    }
+*/
+    public Book(String title, String category, String description, String thumbnail) {
         Title = title;
         Category = category;
         Description = description;
@@ -42,11 +52,11 @@ public class Book {
         Description = description;
     }
 
-    public int getThumbnail() {
+    public String getThumbnail() {
         return Thumbnail;
     }
 
-    public void setThumbnail(int thumbnail) {
+    public void setThumbnail(String thumbnail) {
         Thumbnail = thumbnail;
     }
 

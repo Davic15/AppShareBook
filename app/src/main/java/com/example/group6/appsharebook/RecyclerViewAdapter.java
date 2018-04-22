@@ -2,6 +2,7 @@ package com.example.group6.appsharebook;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.view.ViewGroup;
 import android.support.v7.widget.CardView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 
 import java.util.List;
 
@@ -36,7 +40,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //This method is called for each ViewHolder to bind it to the adapter.
         //This is where we will pass our data to our ViewHolder.
         holder.tv_book_title.setText(mData.get(position).getTitle());
-        holder.img_book_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        //holder.img_book_thumbnail.setImageURI(mData.get(position).getThumbnail());
+        //holder.img_book_thumbnail.setImageResource(mData.get(position).getThumbnail());
+
+        Glide.with(this.mContext)
+                .load(mData.get(position).getThumbnail())
+                .into(holder.img_book_thumbnail);
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
