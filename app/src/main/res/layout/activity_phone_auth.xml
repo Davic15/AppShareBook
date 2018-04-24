@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.group6.appsharebook.PhoneAuth">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:textSize="30dp"
+            android:gravity="center_horizontal"
             android:text="Welcome to phoneAuth"
+            android:textColor="#ffcc66"
             android:textAlignment="center" />
 
 
@@ -27,6 +31,7 @@
                 android:layout_weight="50"
                 android:ems="10"
                 android:hint="enter phone"
+                android:textColor="#ffcc66"
                 android:inputType="phone" />
 
             <EditText
@@ -36,6 +41,7 @@
                 android:layout_weight="50"
                 android:ems="10"
                 android:hint="enter code"
+                android:textColor="#ffcc66"
                 android:inputType="number" />
 
         </LinearLayout>
@@ -43,9 +49,9 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:text="Button" />
+            android:layout_height="60dp"
+            android:background="#ffcc66"
+            android:text="Send code" />
 
     </LinearLayout>
 

@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="Book Title"
                 android:layout_marginTop="10dp"
+                android:background="#56F2A6"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -40,17 +41,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category"
-                android:background="#edecec"
+                android:background="#56F2A6"
                 android:padding="8dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/txtDesc"
-                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="146dp"
                 android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"/>
+                android:background="#56F2A6"
+                android:text="Description"
+                android:textSize="18sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

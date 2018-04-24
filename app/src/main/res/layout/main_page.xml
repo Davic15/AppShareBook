@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="88dp"
         android:padding="7dp"
         android:src="@drawable/logobooks" />
 
@@ -29,34 +29,35 @@
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_button"
         android:layout_width="match_parent"
-        android:layout_height="38dp">
+        android:layout_height="34dp">
 
     </com.google.android.gms.common.SignInButton>
 
     <Button
-        android:id="@+id/phonebutton"
+        android:id="@+id/phoneAuth"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:drawableLeft="@mipmap/phone_icon" />
-
+        android:layout_height="27dp"
+        android:background="#F2D4B6"
+        android:onClick="onClick"
+        android:text="Phone Authentication"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
         android:layout_marginVertical="10dp"
+        android:background="#ffcc66"
         android:text="Sign In"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:background="#ffcc66
-"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="37dp"
+        android:layout_height="29dp"
         android:layout_marginVertical="10dp"
         android:background="#ffcc66"
         android:text="@string/user_email"
@@ -67,35 +68,35 @@
     <EditText
         android:id="@+id/loginUsername"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="39dp"
         android:ems="10"
         android:hint="@string/hint_user_email"
         android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:text="@string/password"
+        android:layout_height="29dp"
         android:layout_marginVertical="10dp"
-        android:textAlignment="textStart"
         android:background="#ffcc66"
+        android:text="@string/password"
+        android:textAlignment="textStart"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/userPassword"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="33dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="29dp"
+        android:background="#ffcc66"
         android:onClick="onClick"
         android:text="@string/loginButton"
-        android:background="#ff0066"
         android:textColor="#ffffff"
         android:textSize="20sp" />
 
@@ -110,6 +111,16 @@
         android:textSize="24sp"
         android:textColor="#ffcc66"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#ffcc66"
+        android:onClick="onClick"
+        android:text="@string/registerButton"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
 
 
 

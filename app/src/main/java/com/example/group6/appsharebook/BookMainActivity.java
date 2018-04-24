@@ -12,31 +12,79 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookMainActivity extends AppCompatActivity {
     List<Book> lstBook;
+    String name,URL;
     Uri myuri;
     StorageReference myStorage = FirebaseStorage.getInstance().getReference();
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_book_recyclerview);
-        lstBook = new ArrayList<>();
-        getImage();
+        // getImage();
+        // String imageUri = myuri.toString();
 
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        Toast.makeText(this, myuri.toString(), Toast.LENGTH_LONG).show();
-        lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e"));
+        mDatabase.child("Books").orderByKey().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e"));
+                lstBook = new ArrayList<Book>();
 
-        lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e"));
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Book newBook = child.getValue(Book.class);
+                    Book myBook = new Book();
+                    String name = newBook.getTitle();
+                    String bookID = child.getKey();
+                    String URL = newBook.getThumbnail();
+                    myBook.setTitle(name);
+                    myBook.setID(bookID);
+                    myBook.setThumbnail(URL);
+                    myBook.setCategory("horror");
+                    myBook.setDescription("ok");
+                    lstBook.add(myBook);
+                    //lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e",bookID));
+
+                    RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this,lstBook);
+                    //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
+                    //could be modified with linerlayoutmanager, etc
+                    myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this,3));
+                    myrv.setAdapter(myAdapter);
+
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
+
+
+       // Toast.makeText(BookMainActivity.this, myuri.toString(), Toast.LENGTH_LONG).show();
+
+
+        //lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", URL));
+
+       // lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e"));
+
+        // lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e"));
 
 
         //here i am filling with data and pictures the layout
@@ -59,15 +107,17 @@ public class BookMainActivity extends AppCompatActivity {
         lstBook.add(new Book("Kiosko","Categorie Book","Description book",R.drawable.p_three));
         */
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lstBook);
-        //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
-        //could be modified with linerlayoutmanager, etc
-        myrv.setLayoutManager(new GridLayoutManager(this,3));
-        myrv.setAdapter(myAdapter);
+
 
     }
+/*
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+
+    }
+/*
     public void getImage(){
         StorageReference newStorage = myStorage.child("picture").child("pic_uno.jpg");
         newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -84,5 +134,6 @@ public class BookMainActivity extends AppCompatActivity {
 
 
     }
+*/
 }
 

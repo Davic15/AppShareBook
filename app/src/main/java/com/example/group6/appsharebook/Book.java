@@ -12,7 +12,10 @@ public class Book {
     private String Category;
     private String Description;
     //private int Thumbnail;
+    private String ID;
     private String Thumbnail;
+
+    public Book() {};
 /*
     public Book (String title, String category, String description, int thumbnail){
         Title = title;
@@ -21,15 +24,22 @@ public class Book {
         Thumbnail = thumbnail;
     }
 */
-    public Book(String title, String category, String description, String thumbnail) {
+    public Book(String title, String category, String description, String thumbnail,String id) {
         Title = title;
         Category = category;
         Description = description;
         Thumbnail = thumbnail;
+        ID = id;
     }
 
     public String getTitle() {
         return Title;
+    }
+
+    public String getID () { return ID; }
+
+    public void setID (String id) {
+        ID = id;
     }
 
     public void setTitle(String title) {
