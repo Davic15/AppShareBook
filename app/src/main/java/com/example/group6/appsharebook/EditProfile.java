@@ -46,12 +46,13 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 public class EditProfile extends AppCompatActivity {
     private int GALLERY = 1, CAMERA_S = 2;
     ImageView image1;
-    EditText name1,surname1,email1,userBio1;
+    EditText name1, surname1, email1, userBio1;
     String contentURI;
     StorageReference myStorage;
 
 
     public static final int RequestPermissionCode = 7;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +67,7 @@ public class EditProfile extends AppCompatActivity {
         myStorage = FirebaseStorage.getInstance().getReference();
 
 
-
-     //   loadImageFromStorage();
+        //loadImageFromStorage();
 
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,18 +78,18 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-    public void sendData (View v) {
+    public void sendData(View v) {
 
         Intent returnIntent = new Intent();
         String name = name1.getText().toString();
-        returnIntent.putExtra("name",name);
+        returnIntent.putExtra("name", name);
         String surname = surname1.getText().toString();
-        returnIntent.putExtra("surname",surname);
+        returnIntent.putExtra("surname", surname);
         String email = email1.getText().toString();
         returnIntent.putExtra("email", email);
         String userBio = userBio1.getText().toString();
-        returnIntent.putExtra("userBio",userBio);
-        returnIntent.putExtra("Uri",contentURI);
+        returnIntent.putExtra("userBio", userBio);
+        returnIntent.putExtra("Uri", contentURI);
 
 
         setResult(RESULT_OK, returnIntent);
@@ -98,12 +98,11 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
-    private void openGallery(){
+    private void openGallery() {
         //check if the permission are granted or not
         checkPer();
 
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle(getResources().getString(R.string.select_action));
         String[] pictureDialogItems = {
                 getResources().getString(R.string.select_photo_gallery),
                 getResources().getString(R.string.select_photo_camera)};
@@ -122,6 +121,7 @@ public class EditProfile extends AppCompatActivity {
         });
         pictureDialog.show();
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -288,7 +288,7 @@ public class EditProfile extends AppCompatActivity {
                 ThirdPermissionResult == PackageManager.PERMISSION_GRANTED;
     }
 
-    /*
+/*
     private void loadImageFromStorage(){
 
         //Retrieve the user profile image

@@ -43,6 +43,9 @@
 
     <string name="facebook_app_id">194805724632575</string>
     <string name="fb_login_protocol_scheme">fb194805724632575</string>
+    <string name="pick_from_gallery">Pick from Gallery</string>
+    <string name="ISBN_to_be_detected"> ISBN</string>
+
 
 
 </resources>

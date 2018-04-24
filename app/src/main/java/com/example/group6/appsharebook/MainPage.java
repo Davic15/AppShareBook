@@ -61,9 +61,9 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
 
         dialog = new ProgressDialog(this);
-        register = findViewById(R.id.textregister);
+        register = findViewById(R.id.register);
         login = findViewById(R.id.login);
-        phoneAuth = findViewById(R.id.phonebutton);
+        phoneAuth = findViewById(R.id.phoneAuth);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -75,7 +75,7 @@ public class MainPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             finish();
-            Intent i = new Intent(this, ShowProfile.class);
+            Intent i = new Intent(this, BookProfile.class);
             startActivity(i);
         }
         signInButton = findViewById(R.id.google_button);

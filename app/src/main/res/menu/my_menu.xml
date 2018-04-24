@@ -7,7 +7,7 @@
     <item
         android:title="@string/app_name"
         android:id="@+id/edit"
-        android:icon="@drawable/ic_create_black_24dp"
+
         app:showAsAction="always"
         />
 

@@ -9,11 +9,13 @@ import java.net.URL;
 public class Book {
 
     private String Title;
-    private String Category;
-    private String Description;
     //private int Thumbnail;
     private String ID;
     private String Thumbnail;
+    private String Author;
+    private String Conditions;
+    private String Language;
+    private String Edition;
 
     public Book() {};
 /*
@@ -24,12 +26,15 @@ public class Book {
         Thumbnail = thumbnail;
     }
 */
-    public Book(String title, String category, String description, String thumbnail,String id) {
+    public Book(String title, String thumbnail,String id,String author,String conditions,String language,String edition) {
         Title = title;
-        Category = category;
-        Description = description;
         Thumbnail = thumbnail;
+
         ID = id;
+        Author = author;
+        Conditions = conditions;
+        Language = language;
+        Edition = edition;
     }
 
     public String getTitle() {
@@ -46,22 +51,6 @@ public class Book {
         Title = title;
     }
 
-    public String getCategory() {
-        return Category;
-    }
-
-    public void setCategory(String category) {
-        Category = category;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
     public String getThumbnail() {
         return Thumbnail;
     }
@@ -71,4 +60,35 @@ public class Book {
     }
 
 
+    public String getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(String author) {
+        Author = author;
+    }
+
+    public String getConditions() {
+        return Conditions;
+    }
+
+    public void setConditions(String conditions) {
+        Conditions = conditions;
+    }
+
+    public String getLanguage() {
+        return Language;
+    }
+
+    public void setLanguage(String language) {
+        Language = language;
+    }
+
+    public String getEdition() {
+        return Edition;
+    }
+
+    public void setEdition(String edition) {
+        Edition = edition;
+    }
 }

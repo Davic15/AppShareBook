@@ -31,13 +31,14 @@
             android:layout_width="match_parent"
             android:layout_height="227dp"
             android:onClick="openGallery"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_name"
             android:textAlignment="textStart"
+            android:textColor="#FFA500"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -45,6 +46,7 @@
             android:id="@+id/userNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFA500"
             android:ems="10"
             android:hint="@string/hint_user_name"
             android:inputType="textPersonName" />
@@ -53,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_surname"
+            android:textColor="#FFA500"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -60,6 +63,7 @@
             android:id="@+id/userSurnameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFA500"
             android:hint="@string/hint_user_surname"
             android:ems="10"
             android:inputType="textPersonName" />
@@ -68,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:textColor="#FFA500"
             android:text="@string/user_email"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -76,6 +81,7 @@
             android:id="@+id/userEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFA500"
             android:hint="@string/hint_user_email"
             android:ems="10"
             android:inputType="textEmailAddress" />
@@ -84,6 +90,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFA500"
             android:text="@string/user_bio"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -94,6 +101,7 @@
             android:id="@+id/userBioEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFA500"
             android:hint="@string/hint_user_bio"
             android:ems="10"
             android:inputType="text" />
@@ -104,7 +112,7 @@
             android:layout_height="wrap_content"
             android:onClick="sendData"
             android:text="@string/user_button_update"
-            android:textColor="@color/buttonTextColor"
+            android:textColor="#FFA500"
             android:textSize="20sp" />
 
     </LinearLayout>

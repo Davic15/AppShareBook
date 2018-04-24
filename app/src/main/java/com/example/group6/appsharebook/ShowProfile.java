@@ -177,7 +177,7 @@ public class ShowProfile extends AppCompatActivity {
                 //uri = data.getStringExtra("Uri");
 
 
-                loadImageFromStorage();
+                //loadImageFromStorage();
                 User user = new User (name,surname,email,bio);
                 mDatabase.child("Users").child(userID).setValue(user);
             }

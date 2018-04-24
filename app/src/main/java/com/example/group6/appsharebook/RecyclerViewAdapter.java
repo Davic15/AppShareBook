@@ -1,3 +1,4 @@
+
 package com.example.group6.appsharebook;
 
 import android.content.Context;
@@ -52,10 +53,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, BookActivity.class);
                 intent.putExtra("Title", mData.get(position).getTitle());
-                intent.putExtra("Description", mData.get(position).getDescription());
+                //intent.putExtra("Description", mData.get(position).getDescription());
                 intent.putExtra("Thumbnail", mData.get(position).getThumbnail());
                 intent.putExtra("ID",mData.get(position).getID());
-                intent.putExtra("Category",mData.get(position).getCategory());
+                //intent.putExtra("Category",mData.get(position).getCategory());
                 //start activity
                 mContext.startActivity(intent);
             }
