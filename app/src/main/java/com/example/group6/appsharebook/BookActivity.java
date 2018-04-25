@@ -53,20 +53,21 @@ public class BookActivity  extends AppCompatActivity{
         String image = intent.getExtras().getString("Thumbnail");
         //String category = intent.getExtras().getString("Category");
         bookID = intent.getExtras().getString("ID");
+        Picasso.get().load(image).into(img);
 
         //setting values
         tvtitle.setText(Title);
         //tvdescription.setText(Description);
         //tvcategory.setText(category);
 
-        StorageReference newStorage = myStorage.child("Bookpics").child(bookID);
-        newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                String myUri = uri.toString();
-                Picasso.get().load(uri).into(img);
-            }
-        });
+       // StorageReference newStorage = myStorage.child("Bookpics").child(bookID);
+       // newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        //    @Override
+       //     public void onSuccess(Uri uri) {
+       //         String myUri = uri.toString();
+        //        Picasso.get().load(uri).into(img);
+        //    }
+       // });
 
 
 

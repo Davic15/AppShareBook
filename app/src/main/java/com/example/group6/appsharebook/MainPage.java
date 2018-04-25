@@ -75,7 +75,7 @@ public class MainPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             finish();
-            Intent i = new Intent(this, BookProfile.class);
+            Intent i = new Intent(this, BookMainActivity.class);
             startActivity(i);
         }
         signInButton = findViewById(R.id.google_button);

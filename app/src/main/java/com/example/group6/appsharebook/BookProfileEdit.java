@@ -138,12 +138,12 @@ public class BookProfileEdit extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_CANCELED){
+        if (resultCode == Activity.RESULT_CANCELED) {
             return;
         }
-        if(requestCode == GALLERY_REQUEST_CODE){
+        if (requestCode == GALLERY_REQUEST_CODE) {
             if (data != null) {
                 contentURI = data.getData().toString();
                 Uri uri = data.getData();
@@ -161,7 +161,6 @@ public class BookProfileEdit extends AppCompatActivity {
                 StorageReference childPath = myStorage.child("Bookpics").child(ImageID);
 
 
-
                 childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -172,32 +171,34 @@ public class BookProfileEdit extends AppCompatActivity {
                     }
                 });
             }
-            } else if(requestCode == CAMERA_REQUEST_CODE){
-                  if (data != null) {
-                     contentURI = data.getData().toString();
-                     Uri uri = data.getData();
+        } else if (requestCode == CAMERA_REQUEST_CODE) {
+            if (data != null) {
+                contentURI = data.getData().toString();
+                Uri uri = data.getData();
 
-                      Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                      saveToInternalStorage(bitmap);
+                //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                // saveToInternalStorage(bitmap);
 
-                      StorageReference childPath = myStorage.child("ProfilePics").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                ImageID = UUID.randomUUID().toString();
 
 
+                StorageReference childPath = myStorage.child("Bookpics").child(ImageID);
 
-                      childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(BookProfileEdit.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(BookProfileEdit.this, "Upload done", Toast.LENGTH_SHORT).show();
                         Uri myuri = taskSnapshot.getDownloadUrl();
                         Picasso.get().load(myuri).into(bookImage);
 
                     }
                 });
+
             }
         }
+    }
 
-        }
 
 
 

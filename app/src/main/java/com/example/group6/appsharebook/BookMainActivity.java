@@ -78,6 +78,11 @@ public class BookMainActivity extends AppCompatActivity {
                                 myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
                                 myrv.setAdapter(myAdapter);
                             }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
                         });
 
                     } else {
