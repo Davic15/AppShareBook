@@ -49,15 +49,15 @@ public class BookActivity  extends AppCompatActivity{
         //Getting data
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Title");
-        String Description = intent.getExtras().getString("Description");
+        //String Description = intent.getExtras().getString("Description");
         String image = intent.getExtras().getString("Thumbnail");
-        String category = intent.getExtras().getString("Category");
-        bookID = intent.getExtras().getString("ID") + ".jpg";
+        //String category = intent.getExtras().getString("Category");
+        bookID = intent.getExtras().getString("ID");
 
         //setting values
         tvtitle.setText(Title);
-        tvdescription.setText(Description);
-        tvcategory.setText(category);
+        //tvdescription.setText(Description);
+        //tvcategory.setText(category);
 
         StorageReference newStorage = myStorage.child("Bookpics").child(bookID);
         newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

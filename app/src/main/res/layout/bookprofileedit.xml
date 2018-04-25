@@ -70,6 +70,12 @@
                 android:inputType="date"
                 android:hint="@string/edition_year"/>
 
+            <EditText
+                android:id="@+id/BookConditionEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="conditions"/>
+
         </LinearLayout>
 
         <Button

@@ -29,8 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -72,7 +75,9 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
     TextView name, ISBN, author, edition, conditions;
     String bookPath;
     ImageView cover;
-    String userID;
+    String userID,authorString;
+    String bookID;
+    Book newBook;
 
     int  pageNumber;
 
@@ -108,8 +113,6 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
         cover = findViewById(R.id.immaginelibro);
 
 
-
-
         ActivityCompat.requestPermissions(BookProfile.this, new String[]
                 {
                         CAMERA,
@@ -131,43 +134,10 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
         /*--------------------------------------------*/
 
 
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
-
-        String nameTemp =sp.getString("name", nomeString);
-        if(name.getText().toString().equals("")){
-            name.setText(nameTemp);
-        }
-
-        String[] authorsTemp=null;
-
-        authorsString = sp.getStringSet("authors", authorsString);
-
-        isbnString = sp.getString("isbn", isbnString);
-        if(ISBN.getText().toString().equals("")){
-            ISBN.setText(isbnString);
-        }
-
-        if(!authorsString.isEmpty()){
-            if(author.getText().toString().equals("")){
-                Iterator<String> it = authorsString.iterator();
-                String tmp = it.next();
-                author.setText(tmp);
-            }
-        }
 
 
-        String editionTemp = sp.getString("edition", editionString);
-        if(edition.getText().toString().equals("")){
-            edition.setText(editionTemp);
-        }
 
-        String conditionsTemp = sp.getString("conditions", conditionsString);
-        if(conditions.getText().toString().equals("")){
-            conditions.setText(conditionsTemp);
-        }
 
-        bookPath = sp.getString("bookPath", bookPath);
-        loadImageFromStorage();
 
 
         scanBarCode.setOnClickListener(new View.OnClickListener(){
@@ -224,8 +194,9 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void send(View view){
-        Intent returnIntent = new Intent();
+        Intent returnIntent = new Intent(BookProfile.this,BookMainActivity.class);
 
+        mDatabase.child("Books").child(bookID).setValue(newBook);
 
         returnIntent.putExtra("name", nomeString);
         returnIntent.putExtra("isbn",isbnString);
@@ -241,6 +212,7 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
         String bookPath1 = bookPath;
         returnIntent.putExtra("bookPath", bookPath1);
         setResult(RESULT_OK, returnIntent);
+        startActivity(returnIntent);
         finish();
 
     }
@@ -264,15 +236,14 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
                 name.setText(nomeString);
             }
 
-            String conditionsString = data.getStringExtra("conditions");
+            conditionsString = data.getStringExtra("conditions");
 
             isbnString = data.getStringExtra("isbn");
             if( isbnString != null){
                 ISBN.setText(isbnString);
             }
 
-            String tmp = data.getStringExtra("author");
-            String authorString = authorsString.iterator().next();
+             authorString = data.getStringExtra("author");
 
                 author.setText(authorString);
 
@@ -282,15 +253,19 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
                 edition.setText(edition1);
             }
 
-            String bookID = data.getExtras().getString("imagePath");
+            bookID = data.getExtras().getString("imagePath");
 
-            Book newBook = new Book (nomeString,bookID,bookID,authorString,conditionsString,languageString,editionString);
+            if (bookID == null) {
+                bookID = UUID.randomUUID().toString();
+                newBook = new Book (nomeString,null,bookID,authorString,conditionsString,languageString,editionString,userID);
+            } else {
+                newBook = new Book (nomeString,bookID,bookID,authorString,conditionsString,languageString,editionString,userID);
+            }
 
-            mDatabase.child("Books").child(bookID).setValue(newBook);
 
             bookPath = data.getStringExtra("bookPath");
 
-            // loadImageFromStorage();
+            loadImageFromStorage();
 
         }
 

@@ -34,7 +34,7 @@ public class BookProfileEdit extends AppCompatActivity {
 
     private final int  CAMERA_REQUEST_CODE = 1, GALLERY_REQUEST_CODE=2;
 
-    EditText name, isbn, author, edition;
+    EditText name, isbn, author, edition,condition;
     Button choosePicture, save;
     ImageView bookImage;
     String bookPath;
@@ -52,6 +52,7 @@ public class BookProfileEdit extends AppCompatActivity {
         isbn = findViewById(R.id.BookISBNEdit);
         author = findViewById(R.id.BookAuthorEdit);
         edition = findViewById(R.id.BookEditionEdit);
+        condition = findViewById(R.id.BookConditionEdit);
 
         choosePicture = findViewById(R.id.choose_image);
         save = findViewById(R.id.save_book_profile);
@@ -113,6 +114,8 @@ public class BookProfileEdit extends AppCompatActivity {
         String author1 = author.getText().toString();
         returnIntent.putExtra("author", author1);
         String edition1 = edition.getText().toString();
+        String condition1 = condition.getText().toString();
+        returnIntent.putExtra("conditions",condition1);
         returnIntent.putExtra("edition",edition1);
         returnIntent.putExtra("imagePath",ImageID);
         String bookPath1 = bookPath;
@@ -145,6 +148,13 @@ public class BookProfileEdit extends AppCompatActivity {
                 contentURI = data.getData().toString();
                 Uri uri = data.getData();
 
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    saveToInternalStorage(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 ImageID = UUID.randomUUID().toString();
 
 
@@ -166,6 +176,9 @@ public class BookProfileEdit extends AppCompatActivity {
                   if (data != null) {
                      contentURI = data.getData().toString();
                      Uri uri = data.getData();
+
+                      Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                      saveToInternalStorage(bitmap);
 
                       StorageReference childPath = myStorage.child("ProfilePics").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 

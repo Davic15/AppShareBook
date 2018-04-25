@@ -9,13 +9,13 @@ import java.net.URL;
 public class Book {
 
     private String Title;
-    //private int Thumbnail;
     private String ID;
     private String Thumbnail;
     private String Author;
     private String Conditions;
     private String Language;
     private String Edition;
+    private String User;
 
     public Book() {};
 /*
@@ -26,15 +26,15 @@ public class Book {
         Thumbnail = thumbnail;
     }
 */
-    public Book(String title, String thumbnail,String id,String author,String conditions,String language,String edition) {
+    public Book(String title, String thumbnail,String id,String author,String conditions,String language,String edition,String user) {
         Title = title;
         Thumbnail = thumbnail;
-
         ID = id;
         Author = author;
         Conditions = conditions;
         Language = language;
         Edition = edition;
+        User = user;
     }
 
     public String getTitle() {
@@ -90,5 +90,13 @@ public class Book {
 
     public void setEdition(String edition) {
         Edition = edition;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String user) {
+        User = user;
     }
 }

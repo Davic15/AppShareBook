@@ -26,10 +26,11 @@ import java.util.List;
 
 public class BookMainActivity extends AppCompatActivity {
     List<Book> lstBook;
-    String name, URL;
+    String name,URL,bookID;
     Uri myuri;
-    StorageReference myStorage = FirebaseStorage.getInstance().getReference();
+    StorageReference myStorage;
     DatabaseReference mDatabase;
+    private Book newBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,33 +40,64 @@ public class BookMainActivity extends AppCompatActivity {
         // String imageUri = myuri.toString();
 
 
+        myStorage = FirebaseStorage.getInstance().getReference();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("Books").orderByKey().addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Books").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 lstBook = new ArrayList<Book>();
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Book newBook = child.getValue(Book.class);
-                    Book myBook = new Book();
-                    String name = newBook.getTitle();
-                    String bookID = child.getKey();
-                    String URL = newBook.getThumbnail();
-                    myBook.setTitle(name);
-                    myBook.setID(bookID);
-                    myBook.setThumbnail(URL);
-                    lstBook.add(myBook);
-                    //lstBook.add(new Book("Bigger better ideas","Categorie Book","Description book", "https://firebasestorage.googleapis.com/v0/b/sharebooks-acb77.appspot.com/o/1.jpg?alt=media&token=a5844cfc-14f2-46f5-b0e1-978d70958e9e",bookID));
+                    newBook = child.getValue(Book.class);
+                    bookID = child.getKey();
+                    String thumb = newBook.getThumbnail();
+                    if (thumb != null) {
+                        StorageReference newStorage = myStorage.child("Bookpics").child(bookID);
+                        newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String myUri = uri.toString();
+                                name = newBook.getTitle();
+                                Book myBook = new Book();
+                                myBook.setAuthor(null);
+                                myBook.setConditions(null);
+                                myBook.setLanguage(null);
+                                myBook.setUser(null);
+                                myBook.setEdition(null);
+                                myBook.setTitle(name);
+                                myBook.setID(bookID);
+                                myBook.setThumbnail(myUri);
+                                lstBook.add(myBook);
+                                RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this, lstBook);
+                                //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
+                                //could be modified with linerlayoutmanager, etc
+                                myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
+                                myrv.setAdapter(myAdapter);
+                            }
+                        });
 
-                    RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this, lstBook);
-                    //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
-                    //could be modified with linerlayoutmanager, etc
-                    myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
-                    myrv.setAdapter(myAdapter);
-
+                    } else {
+                        name = newBook.getTitle();
+                        Book myBook = new Book();
+                        myBook.setAuthor(null);
+                        myBook.setConditions(null);
+                        myBook.setLanguage(null);
+                        myBook.setUser(null);
+                        myBook.setEdition(null);
+                        myBook.setTitle(name);
+                        myBook.setID(bookID);
+                        lstBook.add(myBook);
+                        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+                        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this, lstBook);
+                        //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
+                        //could be modified with linerlayoutmanager, etc
+                        myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
+                        myrv.setAdapter(myAdapter);
+                    }
                 }
             }
 
