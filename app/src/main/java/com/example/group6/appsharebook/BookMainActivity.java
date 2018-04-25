@@ -51,24 +51,26 @@ public class BookMainActivity extends AppCompatActivity {
                 lstBook = new ArrayList<Book>();
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    newBook = child.getValue(Book.class);
-                    bookID = child.getKey();
+                    Book newBook = child.getValue(Book.class);
+                    String bookId = child.getKey();
                     String thumb = newBook.getThumbnail();
-                    if (thumb != null) {
-                        StorageReference newStorage = myStorage.child("Bookpics").child(bookID);
+                    final Book myBook = new Book();
+                    myBook.setAuthor(null);
+                    myBook.setConditions(null);
+                    myBook.setLanguage(null);
+                    myBook.setUser(null);
+                    myBook.setEdition(null);
+                    String name = newBook.getTitle();
+                    String bookID = newBook.getID();
+                    myBook.setTitle(name);
+                    myBook.setID(bookID);
+                    if (thumb!=null) {
+                    StorageReference newStorage = myStorage.child("Bookpics").child(bookId);
                         newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
+
                                 String myUri = uri.toString();
-                                name = newBook.getTitle();
-                                Book myBook = new Book();
-                                myBook.setAuthor(null);
-                                myBook.setConditions(null);
-                                myBook.setLanguage(null);
-                                myBook.setUser(null);
-                                myBook.setEdition(null);
-                                myBook.setTitle(name);
-                                myBook.setID(bookID);
                                 myBook.setThumbnail(myUri);
                                 lstBook.add(myBook);
                                 RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
@@ -78,33 +80,27 @@ public class BookMainActivity extends AppCompatActivity {
                                 myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
                                 myrv.setAdapter(myAdapter);
                             }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle any errors
-                            }
                         });
 
                     } else {
-                        name = newBook.getTitle();
-                        Book myBook = new Book();
-                        myBook.setAuthor(null);
-                        myBook.setConditions(null);
-                        myBook.setLanguage(null);
-                        myBook.setUser(null);
-                        myBook.setEdition(null);
-                        myBook.setTitle(name);
-                        myBook.setID(bookID);
-                        lstBook.add(myBook);
-                        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-                        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this, lstBook);
-                        //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
-                        //could be modified with linerlayoutmanager, etc
-                        myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
-                        myrv.setAdapter(myAdapter);
+                        StorageReference newStorage = myStorage.child("No-image-available.jpg");
+                        newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String myUri = uri.toString();
+                                myBook.setThumbnail(myUri);
+                                lstBook.add(myBook);
+                                RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(BookMainActivity.this, lstBook);
+                                //gridLayoutManager is an implementation of Recyclerview that lays out items in a grid.
+                                //could be modified with linerlayoutmanager, etc
+                                myrv.setLayoutManager(new GridLayoutManager(BookMainActivity.this, 3));
+                                myrv.setAdapter(myAdapter);
+                            }
+                        });
+                    }
                     }
                 }
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
