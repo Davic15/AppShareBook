@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/book_label"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/luckiest_guy"
+            android:gravity="center"
+            android:textSize="30sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+            <TextView
+                android:id="@+id/BookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/book_name" />
+
+
+            <TextView
+                android:id="@+id/BookISBN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/ISBN" />
+
+            <TextView
+                android:id="@+id/BookAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/book_author" />
+
+
+            <TextView
+                android:id="@+id/BookEdition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/edition_year" />
+
+            <TextView
+                android:id="@+id/BookCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/book_conditions"/>
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/immaginelibro"
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp" />
+
+        <Button
+            android:id="@+id/button_barscan"
+            android:layout_width="150dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/White"
+            android:text="@string/scan_bar_code" />
+
+
+        <Button
+            android:id="@+id/button_insertInfo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/White"
+            android:onClick="openGallery"
+            android:text="Fill Manually" />
+
+        <Button
+            android:id="@+id/saveButton_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:onClick="send"
+            android:text="@string/save_button_book" />
+    </LinearLayout>
+
+
+
+
+</ScrollView>

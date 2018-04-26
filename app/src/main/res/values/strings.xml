@@ -7,6 +7,7 @@
     <string name="user_bio">Bio</string>
     <string name="user_button">Update Information</string>
     <string name="user_button_update">Save</string>
+    <string name="select_pic">Select Picture</string>
     <string name="select_action">Select action</string>
     <string name="select_photo_gallery">Select photo from Gallery</string>
     <string name="select_photo_camera">Select photo from Camera</string>
@@ -28,6 +29,12 @@
     <string name="registerButton">Register</string>
 
 
+    //toolbar
+    <string name="add">Add</string>
+    <string name="logout">Logout</string>
+    <string name="edit">Edit Profile</string>
+    <string name="go_to_books">Go to books</string>
+
     //BookProfile String (Book Informations)
     <string name="book_label">Book Profile</string>
     <string name="book_name">Name</string>
@@ -39,13 +46,22 @@
     <string name="scan_bar_code">Scan Barcode</string>
     <string name="take_book_picture">Take Book Picture</string>
     <string name="save_button_book">Save</string>
-
-
+    <string name="book_category">Category</string>
+    <string name="conditions">Conditions</string>
     <string name="facebook_app_id">194805724632575</string>
     <string name="fb_login_protocol_scheme">fb194805724632575</string>
     <string name="pick_from_gallery">Pick from Gallery</string>
     <string name="ISBN_to_be_detected"> ISBN</string>
 
 
+    //Main Page strings
+    <string name="Phone_auth">Phone Authentication</string>
+    <string name="sign_in">Sign In</string>
+    //Registration
+    <string name="phone">Enter Phone number</string>
+    <string name="code">Enter Code Received</string>
+    <string name="send_code">Send</string>
+
+    //menu
 
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.example.group6.appsharebook.BookActivity"
     android:background="#fcfcfc">
 
@@ -22,37 +22,60 @@
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="170dp"
-                android:background="#2d2d2d"
+                android:background="@color/White"
+                android:layout_margin="32dp"
                 android:id="@+id/bookthumbnail"
                 android:scaleType="centerCrop"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="16dp"
+                android:background="@android:color/darker_gray"/>
 
             <TextView
                 android:id="@+id/txttitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Book Title"
-                android:layout_marginTop="10dp"
-                android:background="#56F2A6"
-                android:textSize="18sp"
+                android:text="@string/book_name"
+                android:textColor="@color/textColor"
+                android:background="@color/background"
+                android:textAlignment="center"
+                android:textSize="25sp"
                 android:textStyle="bold"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="16dp"
+                android:background="@android:color/darker_gray"/>
 
             <TextView
                 android:id="@+id/txtCat"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Category"
-                android:background="#56F2A6"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/textColor"
+                android:text="@string/book_category"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:background="@color/background" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="16dp"
+                android:background="@android:color/darker_gray"/>
 
             <TextView
                 android:id="@+id/txtDesc"
                 android:layout_width="match_parent"
                 android:layout_height="146dp"
                 android:layout_marginTop="10dp"
-                android:background="#56F2A6"
+                android:textColor="@color/textColor"
+                android:background="@color/White"
+                android:textAlignment="center"
                 android:text="Description"
-                android:textSize="18sp" />
+                android:textSize="25sp" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

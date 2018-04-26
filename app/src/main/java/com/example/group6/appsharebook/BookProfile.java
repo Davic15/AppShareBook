@@ -81,9 +81,10 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
 
     int  pageNumber;
 
-    String nomeString, isbnString, editionString, conditionsString, languageString;
+    String nomeString, autore, isbnString, editionString, conditionsString, languageString;
 
     Set<String> authorsString = new TreeSet<>();
+
 
     public static final int RequestPermissionCode = 7;
 
@@ -122,8 +123,6 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
                         ACCESS_NETWORK_STATE
                 }, RequestPermissionCode);
 
-
-
         /*-------------------------------------------*/
 
         //Check if a Loader is running, if it is, reconnect to it
@@ -132,13 +131,6 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
         }
 
         /*--------------------------------------------*/
-
-
-
-
-
-
-
 
         scanBarCode.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -227,6 +219,7 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
             }
             //retrieve book info by ISBN query
             flagResultFromQuery=true;
+            bookID = UUID.randomUUID().toString();
             searchBookInfoByISBN(isbn);
         }
 
@@ -353,7 +346,7 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
                     boolean WriteExternal = grantResults[2] == PackageManager.PERMISSION_GRANTED;
                     if (CameraPermission && ReadExternal && WriteExternal) {
 
-                        Toast.makeText(BookProfile.this, getResources().getString(R.string.permission_granted), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(BookProfile.this, getResources().getString(R.string.permission_granted), Toast.LENGTH_LONG).show();
                     }
                     else {
                         Toast.makeText(BookProfile.this,getResources().getString(R.string.permission_denied),Toast.LENGTH_LONG).show();
@@ -414,9 +407,10 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
             nomeString = volumeInfo.getString("title");
             authorsString.clear();
             try{
-                for(int i= 0; i<volumeInfo.getJSONArray("authors").length(); i++){
+                /*for(int i= 0; i<volumeInfo.getJSONArray("authors").length(); i++){
                     authorsString.add(volumeInfo.getJSONArray("authors").getString(i));
-                }
+                }*/
+                autore = volumeInfo.getJSONArray("authors").getString(0);
 
             }catch (Exception e){
                 e.printStackTrace();

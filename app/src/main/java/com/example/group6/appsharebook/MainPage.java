@@ -55,6 +55,7 @@ public class MainPage extends AppCompatActivity {
     private Button phoneAuth;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

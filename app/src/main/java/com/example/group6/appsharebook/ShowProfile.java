@@ -16,12 +16,15 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -140,6 +143,20 @@ public class ShowProfile extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.my_menu, menu);
 
+
+        int positionOfMenuItem = 3;
+        MenuItem item = menu.getItem(positionOfMenuItem);
+        SpannableString s = new SpannableString("Go to books");
+        s.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s.length(), 0);
+        item.setTitle(s);
+
+
+        int positionOfMenuItem1 = 2;
+        MenuItem item1 = menu.getItem(positionOfMenuItem1);
+        SpannableString s1 = new SpannableString("Add Book");
+        s1.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s1.length(), 0);
+        item1.setTitle(s1);
+
         return true;
     }
 
@@ -149,8 +166,28 @@ public class ShowProfile extends AppCompatActivity {
         if(id == R.id.edit){
             Intent intent=new Intent(this, EditProfile.class);
             this.startActivityForResult(intent,SECOND_ACTIVITY_REQUEST_CODE);
-
         }
+        if(id==R.id.add){
+            //switch to add book activity
+            Intent intent=new Intent(this, BookProfile.class);
+            this.startActivity(intent);
+            finish();
+        }
+        if(id==R.id.logout){
+            //do the logout
+            FirebaseAuth.getInstance().signOut();
+            Intent intent=new Intent(this, MainPage.class);
+            this.startActivity(intent);
+            finish();
+        }
+        if(id == R.id.books){
+            Intent intent = new Intent(this, BookMainActivity.class);
+            this.startActivity(intent);
+            finish();
+        }
+
+
+
         return super.onOptionsItemSelected(menu);
     }
 

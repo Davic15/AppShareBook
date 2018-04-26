@@ -7,51 +7,67 @@
     android:orientation="vertical"
     tools:context="com.example.group6.appsharebook.PhoneAuth">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:textSize="24sp"
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/Phone_auth"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/luckiest_guy"
+        android:textAlignment="center" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/textPhone"
+            android:layout_width="452dp"
             android:layout_height="52dp"
-            android:textSize="30dp"
-            android:gravity="center_horizontal"
-            android:text="Welcome to phoneAuth"
-            android:textColor="#ffcc66"
-            android:textAlignment="center" />
+            android:layout_weight="50"
+            android:ems="10"
+            android:hint="@string/phone"
+            android:textColor="@color/textColor"
+            android:inputType="phone" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical">
-
-
-            <EditText
-                android:id="@+id/textPhone"
-                android:layout_width="452dp"
-                android:layout_height="52dp"
-                android:layout_weight="50"
-                android:ems="10"
-                android:hint="enter phone"
-                android:textColor="#ffcc66"
-                android:inputType="phone" />
-
-            <EditText
-                android:id="@+id/codeText"
-                android:layout_width="452dp"
-                android:layout_height="52dp"
-                android:layout_weight="50"
-                android:ems="10"
-                android:hint="enter code"
-                android:textColor="#ffcc66"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#ffcc66"
-            android:text="Send code" />
+        <EditText
+            android:id="@+id/codeText"
+            android:layout_width="452dp"
+            android:layout_height="52dp"
+            android:layout_weight="50"
+            android:ems="10"
+            android:hint="@string/code"
+            android:textColor="@color/textColor"
+            android:inputType="number" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/textColor"
+        android:textColor="@color/White"
+        android:text="@string/send_code" />
+
+</LinearLayout>
+
+
 

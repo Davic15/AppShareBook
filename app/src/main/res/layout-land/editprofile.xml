@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="wrap_content"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -18,6 +18,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="35sp"
+            android:textColor="@color/textColor"
             android:id="@+id/textView7" />
 
         <ImageView
@@ -27,14 +28,8 @@
             android:layout_height="227dp"
             android:layout_below="@+id/textView7"
             android:layout_toStartOf="@+id/userNameEditText"
+            app:srcCompat="@mipmap/ic_launcher_round" />
 
-
-            app:srcCompat="@mipmap/ic_launcher_round"
-            />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/textView"
@@ -44,6 +39,7 @@
             android:layout_alignTop="@+id/imageView"
             android:layout_marginStart="345dp"
             android:textSize="24sp"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             android:text="@string/user_name" />
 
@@ -54,6 +50,7 @@
             android:layout_alignStart="@+id/textView"
             android:layout_below="@+id/textView"
             android:ems="10"
+            android:textColor="@color/textColor"
             android:hint="@string/hint_user_name"
             android:inputType="textPersonName" />
 
@@ -64,6 +61,7 @@
             android:layout_alignStart="@+id/userNameEditText"
             android:layout_below="@+id/userNameEditText"
             android:textSize="24sp"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             android:text="@string/user_surname" />
 
@@ -74,6 +72,7 @@
             android:layout_alignStart="@+id/textView2"
             android:layout_below="@+id/textView2"
             android:layout_marginTop="12dp"
+            android:textColor="@color/textColor"
             android:ems="10"
             android:hint="@string/hint_user_surname"
             android:inputType="textPersonName" />
@@ -85,6 +84,7 @@
             android:layout_alignStart="@+id/userSurnameEditText"
             android:layout_below="@+id/userSurnameEditText"
             android:textSize="24sp"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             android:text="@string/user_email" />
 
@@ -95,6 +95,7 @@
             android:layout_alignStart="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:ems="10"
+            android:textColor="@color/textColor"
             android:hint="@string/hint_user_email"
             android:inputType="textEmailAddress" />
 
@@ -105,6 +106,7 @@
             android:layout_alignStart="@+id/userEmailEditText"
             android:layout_below="@+id/userEmailEditText"
             android:textSize="24sp"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             android:text="@string/user_bio" />
 
@@ -116,6 +118,7 @@
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/textView4"
             android:ems="10"
+            android:textColor="@color/textColor"
             android:hint="@string/hint_user_bio"
             android:inputType="text" />
 
@@ -129,5 +132,7 @@
             android:text="@string/user_button_update" />
 
     </RelativeLayout>
+
+
 
 </ScrollView>

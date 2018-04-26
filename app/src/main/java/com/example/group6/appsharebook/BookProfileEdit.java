@@ -25,6 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -157,7 +158,6 @@ public class BookProfileEdit extends AppCompatActivity {
 
                 ImageID = UUID.randomUUID().toString();
 
-
                 StorageReference childPath = myStorage.child("Bookpics").child(ImageID);
 
 
@@ -173,11 +173,14 @@ public class BookProfileEdit extends AppCompatActivity {
             }
         } else if (requestCode == CAMERA_REQUEST_CODE) {
             if (data != null) {
-                contentURI = data.getData().toString();
+                //contentURI = data.getData().toString();
                 Uri uri = data.getData();
 
-                //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                // saveToInternalStorage(bitmap);
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] cameraPic = baos.toByteArray();
+                saveToInternalStorage(bitmap);
 
                 ImageID = UUID.randomUUID().toString();
 
@@ -185,7 +188,7 @@ public class BookProfileEdit extends AppCompatActivity {
                 StorageReference childPath = myStorage.child("Bookpics").child(ImageID);
 
 
-                childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                childPath.putBytes(cameraPic).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(BookProfileEdit.this, "Upload done", Toast.LENGTH_SHORT).show();

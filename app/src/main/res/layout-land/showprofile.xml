@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -40,6 +41,14 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_margin="8dp"
+                android:background="@android:color/darker_gray"/>
+
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
@@ -52,8 +61,14 @@
                     android:fontFamily="@font/luckiest_guy"
                     android:text="@string/user_label"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textAllCaps="true"
                     android:textSize="35sp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:id="@+id/textViewUserName1"
@@ -61,8 +76,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_name"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/textViewUserName"
@@ -71,7 +88,14 @@
                     android:text="@string/user_name"
                     android:textAlignment="center"
                     android:textAllCaps="false"
+                    android:textColor="@color/textColor"
                     android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:id="@+id/textViewUserSurname1"
@@ -80,6 +104,7 @@
                     android:text="@string/user_surname"
                     android:textAlignment="center"
                     android:textSize="24sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
 
                 <TextView
@@ -88,7 +113,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_surname"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:id="@+id/textViewUserEmail1"
@@ -97,6 +129,7 @@
                     android:text="@string/user_email"
                     android:textAlignment="center"
                     android:textSize="24sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
 
                 <TextView
@@ -105,7 +138,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_email"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/darker_gray"/>
 
                 <TextView
                     android:id="@+id/textViewUserBio1"
@@ -114,6 +154,7 @@
                     android:text="@string/user_bio"
                     android:textAlignment="center"
                     android:textSize="24sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
 
                 <TextView
@@ -123,6 +164,12 @@
                     android:text="@string/user_bio"
                     android:textAlignment="center"
                     android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/darker_gray"/>
 
             </LinearLayout>
 

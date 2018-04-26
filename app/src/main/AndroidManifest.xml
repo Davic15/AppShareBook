@@ -16,7 +16,7 @@ package="com.example.group6.appsharebook">
 
 <application
     android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
+    android:icon="@mipmap/ic_main"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
@@ -35,7 +35,7 @@ package="com.example.group6.appsharebook">
     <activity android:name=".CameraCodeScanner" />
     <activity android:name=".BookProfileEdit"/>
 
-    <activity android:name=".PhoneAuth"></activity>
+    <activity android:name=".PhoneAuth"/>
 
     <meta-data
         android:name="preloaded_fonts"

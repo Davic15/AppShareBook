@@ -21,6 +21,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,11 +30,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,7 +56,10 @@ public class EditProfile extends AppCompatActivity {
     EditText name1, surname1, email1, userBio1;
     String contentURI;
     StorageReference myStorage;
+    Button select_action;
 
+    DatabaseReference mDatabase, newDatabase;
+    StorageReference newStorage;
 
     public static final int RequestPermissionCode = 7;
 
@@ -63,19 +73,65 @@ public class EditProfile extends AppCompatActivity {
         surname1 = findViewById(R.id.userSurnameEditText);
         email1 = findViewById(R.id.userEmailEditText);
         userBio1 = findViewById(R.id.userBioEditText);
-
+        select_action = findViewById(R.id.opGallery);
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         myStorage = FirebaseStorage.getInstance().getReference();
+        newStorage = FirebaseStorage.getInstance().getReference().child("ProfilePics").child(userID);
+        if(newStorage != null){
+            newStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(image1);
+                }
+            });
+        }
 
 
-        //loadImageFromStorage();
-
-        image1.setOnClickListener(new View.OnClickListener() {
+       /* image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openGallery();
             }
 
+        });*/
+        select_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
         });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        newDatabase = mDatabase.child("Users").child(userID);
+
+        if (newDatabase != null)
+            mDatabase.child("Users").orderByKey().equalTo(userID).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot child :dataSnapshot.getChildren()) {
+                        String loggedUsername = child.getValue(User.class).getName();
+                        name1.setText(loggedUsername);
+                        String loggedUserSurname = child.getValue(User.class).getSurname();
+                        surname1.setText(loggedUserSurname);
+                        String loggedUserEmail = child.getValue(User.class).getEmail();
+                        email1.setText(loggedUserEmail);
+                        String loggedUserBio = child.getValue(User.class).getUserBio();
+                        userBio1.setText(loggedUserBio);
+                        // String uri = child.getValue(User.class).getUri();
+
+                    }
+
+
+                }
+                @Override
+                public void onCancelled (DatabaseError databaseError){
+                    throw databaseError.toException();
+                }
+
+            });
+
     }
 
     public void sendData(View v) {
@@ -98,7 +154,7 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
-    private void openGallery() {
+    public void openGallery() {
         //check if the permission are granted or not
         checkPer();
 
@@ -137,8 +193,6 @@ public class EditProfile extends AppCompatActivity {
 
                     StorageReference childPath = myStorage.child("ProfilePics").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-
-
                     childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -171,15 +225,21 @@ public class EditProfile extends AppCompatActivity {
             //image1.setImageBitmap( getRoundedCornerBitmap(thumbnail));
             //saveToInternalStorage(thumbnail);
             if (data != null) {
-                contentURI = data.getData().toString();
-                Uri uri = data.getData();
+
+
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] cameraPic = baos.toByteArray();
+                //image1.setImageBitmap( getRoundedCornerBitmap(thumbnail));
+                //saveToInternalStorage(thumbnail);
 
 
                 StorageReference childPath = myStorage.child("ProfilePics").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
 
-                childPath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                childPath.putBytes(cameraPic).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(EditProfile.this, getResources().getString(R.string.image_saved), Toast.LENGTH_SHORT).show();

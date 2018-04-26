@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.group6.appsharebook.Registration">
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:padding="12dp"
-         />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:text="@string/registerButton"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        android:padding="12dp"
-        android:fontFamily="@font/luckiest_guy"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:text="@string/user_email"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/registerUsername"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:hint="@string/hint_user_email"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:text="@string/password"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/registerPassword"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/registrationButton"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/registerButton"
-        android:textColor="@color/buttonTextColor"
-        android:textSize="20sp" />
+        android:orientation="vertical"
+        tools:context="com.example.group6.appsharebook.Registration">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:src="@drawable/ic_action_name"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="@string/registerButton"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:padding="12dp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/luckiest_guy"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="@string/user_email"
+            android:textAlignment="textStart"
+            android:textColor="@color/textColor"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/registerUsername"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:ems="10"
+            android:textColor="@color/textColor"
+            android:hint="@string/hint_user_email"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:text="@string/password"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            android:textColor="@color/textColor"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="@color/textColor"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/registrationButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/registerButton"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</ScrollView>

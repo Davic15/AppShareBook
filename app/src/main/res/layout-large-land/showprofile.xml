@@ -41,6 +41,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -48,6 +49,7 @@
                     android:fontFamily="@font/luckiest_guy"
                     android:text="@string/user_label"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textAllCaps="true"
                     android:textSize="35sp" />
                 <TextView
@@ -57,6 +59,7 @@
                     android:text="@string/user_name"
                     android:textAlignment="center"
                     android:textSize="30sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/textViewUserName"
@@ -65,6 +68,7 @@
                     android:text="@string/user_name"
                     android:textAlignment="center"
                     android:textAllCaps="false"
+                    android:textColor="@color/textColor"
                     android:textSize="25sp" />
 
                 <TextView
@@ -74,6 +78,7 @@
                     android:text="@string/user_surname"
                     android:textAlignment="center"
                     android:textSize="30sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/textViewUserSurname"
@@ -81,6 +86,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_surname"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="25sp" />
 
                 <TextView
@@ -90,6 +96,7 @@
                     android:text="@string/user_email"
                     android:textAlignment="center"
                     android:textSize="30sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/textViewUserEmail"
@@ -97,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_email"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="25sp" />
 
                 <TextView
@@ -106,6 +114,7 @@
                     android:text="@string/user_bio"
                     android:textAlignment="center"
                     android:textSize="30sp"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
 
                 <TextView
@@ -114,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/user_bio"
                     android:textAlignment="center"
+                    android:textColor="@color/textColor"
                     android:textSize="25sp" />
             </LinearLayout>
 

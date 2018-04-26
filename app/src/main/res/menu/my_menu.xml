@@ -5,11 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:title="@string/app_name"
+        android:title="@string/edit"
         android:id="@+id/edit"
+        android:icon="@drawable/ic_edit"
+        app:showAsAction="ifRoom" />
 
-        app:showAsAction="always"
-        />
+    <item
+        android:title="@string/logout"
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        app:showAsAction="always"/>
 
+    <item
+        android:title="@string/add"
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="@string/go_to_books"
+        android:id="@+id/books"
+        app:showAsAction="ifRoom"/>
 
 </menu>

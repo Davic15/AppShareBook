@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/luckiest_guy"
             android:text="@string/book_label"
+            android:textColor="@color/textColor"
             android:textAlignment="center"
             android:layout_margin="16dp"
             android:textAllCaps="true"
@@ -46,6 +47,7 @@
                 android:id="@+id/BookNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
                 android:inputType="textPersonName"
                 android:hint="@string/book_name"/>
 
@@ -54,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:textColor="@color/textColor"
                 android:hint="@string/ISBN_to_be_detected"/>
 
             <EditText
@@ -61,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
+                android:textColor="@color/textColor"
                 android:hint="@string/book_author"/>
 
             <EditText
@@ -74,7 +78,9 @@
                 android:id="@+id/BookConditionEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="conditions"/>
+                android:inputType="date"
+                android:textColor="@color/textColor"
+                android:hint="@string/book_conditions"/>
 
         </LinearLayout>
 
