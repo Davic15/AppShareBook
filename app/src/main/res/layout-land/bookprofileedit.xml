@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/luckiest_guy"
+            android:text="@string/book_label"
+            android:textAlignment="center"
+            android:layout_margin="16dp"
+            android:textAllCaps="true"
+            android:textSize="35sp"
+            android:id="@+id/texttitle"/>
+
+        <ImageView
+            android:id="@+id/imageBook"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/texttitle"
+            android:layout_gravity="center"
+            android:layout_marginTop="72dp" />
+
+        <Button
+            android:id="@+id/choose_image"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="31dp"
+            android:layout_below="@+id/imageBook"
+            android:text="@string/pick_from_gallery"
+            android:textColor="@color/White" />
+
+        <EditText
+            android:id="@+id/BookNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/book_name"
+            android:layout_below="@+id/texttitle"
+            android:layout_toRightOf="@id/imageBook"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/BookISBNEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ISBN_to_be_detected"
+            android:layout_below="@+id/BookNameEdit"
+            android:layout_toRightOf="@id/imageBook"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/BookAuthorEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/book_author"
+            android:layout_toRightOf="@id/imageBook"
+            android:layout_below="@+id/BookISBNEdit"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/BookEditionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edition_year"
+            android:layout_toRightOf="@id/imageBook"
+            android:layout_below="@+id/BookAuthorEdit"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/BookConditionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/BookEditionEdit"
+            android:layout_toRightOf="@id/imageBook"
+            android:hint="conditions" />
+
+        <Button
+            android:id="@+id/save_book_profile"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+            android:layout_marginEnd="82dp"
+            android:onClick="send"
+            android:text="@string/save_button_book"
+            android:textColor="@color/White" />
+    </RelativeLayout>
+
+</ScrollView>
