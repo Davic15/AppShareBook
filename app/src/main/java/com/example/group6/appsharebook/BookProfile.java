@@ -217,6 +217,9 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
             if(!isbn.isEmpty()){
                 ISBN.setText(isbn);
             }
+            if (conditionsString==null) {
+                conditionsString = "";
+            }
             //retrieve book info by ISBN query
             flagResultFromQuery=true;
             bookID = UUID.randomUUID().toString();
@@ -228,7 +231,6 @@ public class BookProfile  extends AppCompatActivity implements LoaderManager.Loa
             if( nomeString != null){
                 name.setText(nomeString);
             }
-
             conditionsString = data.getStringExtra("conditions");
 
             isbnString = data.getStringExtra("isbn");
