@@ -1,4 +1,9 @@
-# AppShareBook
+<p align="center">
+  <b></b><br>
+  <b> AppShareBook</b><br>
+  <b> Mobile Application Development</b><br>
+  <br><br>
+</p>
 This app was developed for the course Mobile Application Development at Politecnico di Torino (Italy).
 Assignment Description
 Create an app that helps people to share books
