@@ -5,7 +5,13 @@
   <br><br>
 </p>
 This app was developed for the course Mobile Application Development at Politecnico di Torino (Italy).
-Assignment Description
+<p align="center">
+  <b></b><br>
+  <b> Assignment Description</b><br>
+  <br><br>
+</p>
+
+
 Create an app that helps people to share books
   - The app should easily allow users to sign up and setup a basic profile
   - Users can make books available for sharing, providing all the relevant pieces of information by accessing some shared database
